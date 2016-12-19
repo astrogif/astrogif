@@ -1,17 +1,21 @@
-@font-face {
-  font-family: 'interface';
-  src: url('./resources/interface.woff') format('woff');
-}
-
 * {
   box-sizing: border-box;
+  font-family: 'Open Sans','Helvetica Neue',helvetica,sans-serif;
+  font-weight: 100;
 }
 
 body {
-  background-color: #252525;
+  background-image: linear-gradient(130deg, #1c133e, #24426e);
   color: #fff;
-  font-family: 'interface','Helvetica Neue',helvetica,sans-serif;
   margin: 0;
   overflow: hidden;
   padding: 10px;
+}
+
+.primaryIconColor {
+  fill: #fff;
+}
+
+.secondaryIconColor {
+  fill: #85b4dd;
 }

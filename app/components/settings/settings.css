@@ -1,5 +1,5 @@
 .container {
-  background-color: #fff;
+  background-image: linear-gradient(#f1f4fa, #d4def1);
   bottom: 10px;
   color: #252525;
   left: 10px;
@@ -10,19 +10,18 @@
 }
 
 .close {
-  background-color: green;
   cursor: pointer;
   display: block;
-  height: 30px;
+  height: 15px;
   position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 30px
+  right: 15px;
+  top: 15px;
+  width: 15px
 }
 
 .title {
   font-size: 16px;
-  line-height: 30px;
+  line-height: 20px;
   margin: 0;
 }
 
@@ -31,24 +30,9 @@
 }
 
 .subTitle {
-  font-size: 14px;
+  color: #10abeb;
+  font-size: 12px;
+  font-weight: 400;
   margin: 0 0 5px;
-}
-
-.radioGroup {
-  display: flex;
-  text-align: center;
-}
-
-.radioLabel {
-  background-color: #252525;
-  color: #fff;
-  cursor: pointer;
-  flex-grow: 1;
-  display: block;
-  padding: 5px 0;
-}
-
-.radioLabelActive {
-  background-color: green;
+  text-transform: uppercase;
 }

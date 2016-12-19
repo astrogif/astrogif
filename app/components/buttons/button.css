@@ -1,0 +1,17 @@
+.container {
+  background-color: #fff;
+  border-right: 1px solid #cad4e9;
+  cursor: pointer;
+  flex-grow: 1;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.container:last-child {
+  border-right: none;
+}
+
+.active {
+  background-color: transparent;
+  background-image: linear-gradient(#cad4e9, #b7c5de);
+}

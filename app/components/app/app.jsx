@@ -13,7 +13,7 @@ import Settings from '../settings/settings';
 import styles from './app.css';
 
 const initialState = {
-  error: false,
+  error: null,
   gif: null,
   fetching: false,
   query: null,

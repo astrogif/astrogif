@@ -1,6 +1,10 @@
 import ElectronConfig from 'electron-config';
 
-const defaults = {}
+const defaults = {
+  copy: 'url',
+  hide: 'reset',
+  preview: 'gif'
+};
 
 const electronConfig = new ElectronConfig({
   defaults

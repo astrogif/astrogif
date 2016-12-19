@@ -1,0 +1,6 @@
+.container {
+  border-radius: 2px;
+  display: flex;
+  overflow: hidden;
+  text-align: center;
+}

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import MagnifyingGlass from './magnifyingGlass';
 
+import magnifyingGlass from './magnifyingGlass.png';
 import styles from './searchBox.css';
 
 export default class SearchBox extends Component {
@@ -44,12 +44,12 @@ export default class SearchBox extends Component {
     const { search } = this.props;
 
     return (<div className={styles.container}>
-      <MagnifyingGlass />
+      <img className={styles.magnifyingGlass} src={magnifyingGlass} />
       <input
         ref={i => this.input = i }
         onKeyUp={this.onInputKeyDown}
         className={styles.input}
-        placeholder="Search all the gifs" />
+        placeholder="what are you looking for?" />
       </div>);
   }
 }

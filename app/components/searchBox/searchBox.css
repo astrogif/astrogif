@@ -18,6 +18,8 @@
 
 .magnifyingGlass {
   position: absolute;
-  left: 10px;
-  top: 10px;
+  height: 20px;
+  left: 17px;
+  top: 17px;
+  width: 20px;
 }
