@@ -1,0 +1,54 @@
+.container {
+  background-color: #fff;
+  bottom: 10px;
+  color: #252525;
+  left: 10px;
+  padding: 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.close {
+  background-color: green;
+  cursor: pointer;
+  display: block;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px
+}
+
+.title {
+  font-size: 16px;
+  line-height: 30px;
+  margin: 0;
+}
+
+.optionContainer {
+  margin-top: 20px;
+}
+
+.subTitle {
+  font-size: 14px;
+  margin: 0 0 5px;
+}
+
+.radioGroup {
+  display: flex;
+  text-align: center;
+}
+
+.radioLabel {
+  background-color: #252525;
+  color: #fff;
+  cursor: pointer;
+  flex-grow: 1;
+  display: block;
+  padding: 5px 0;
+}
+
+.radioLabelActive {
+  background-color: green;
+}
