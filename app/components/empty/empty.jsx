@@ -30,6 +30,7 @@ export default class Empty extends Component {
         </g>
       </svg>
       <img src={cog} className={styles.cog} onClick={openSettings} />
+      <h1 className={styles.title}>AstroGif</h1>
     </div>);
   }
 }

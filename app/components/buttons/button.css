@@ -1,10 +1,15 @@
 .container {
   background-color: #fff;
+  border: none;
   border-right: 1px solid #cad4e9;
   cursor: pointer;
   flex-grow: 1;
   font-size: 14px;
   padding: 5px;
+}
+
+.container:focus, .container:active {
+  outline: none;
 }
 
 .container:last-child {

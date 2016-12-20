@@ -2,6 +2,54 @@
   "name": "example-menubar-app",
   "version": "1.0.0",
   "description": "example menubar electron app",
+  "main": "index.js",
+  "scripts": {
+    "hot-server": "node -r babel-register server.js",
+    "build-main": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.electron.js --progress --profile --colors",
+    "build-renderer": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.production.js --progress --profile --colors",
+    "build": "npm run build-main && npm run build-renderer",
+    "start": "cross-env NODE_ENV=production electron ./",
+    "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./main.js",
+    "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\"",
+    "release": "build -mwl --publish always",
+    "release-mac": "npm run build && build -m",
+    "release-win": "npm run build && build -w"
+  },
+  "build": {
+    "productName": "AstroGif",
+    "appId": "com.jamesmacfie.astro",
+    "linux": {
+      "target": "tar.gz"
+    },
+    "mac": {
+      "target": "zip"
+    },
+    "win": {
+      "target": "squirrel"
+    },
+    "squirrelWindows": {
+      "msi": true
+    },
+    "asar": false
+  },
+  "directories": {
+    "output": "release"
+  },
+  "bin": {
+    "electron": "./node_modules/.bin/electron"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesmacfie/astrogif.git"
+  },
+  "author": {
+    "name": "James Macfie",
+    "url": "https://github.com/jamesmacfie"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jamesmacfie/astrogif/issues"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "css-modules-require-hook": "^4.0.5",
@@ -49,18 +97,5 @@
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2"
-  },
-  "main": "main.js",
-  "scripts": {
-    "hot-server": "node -r babel-register server.js",
-    "build-main": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.electron.js --progress --profile --colors",
-    "build-renderer": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.production.js --progress --profile --colors",
-    "build": "npm run build-main && npm run build-renderer",
-    "start": "cross-env NODE_ENV=production electron ./",
-    "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./main/index.js",
-    "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\"",
-    "release": "build -mwl --publish always",
-    "release-mac": "npm run build && build -m",
-    "release-win": "npm run build && build -w"
   }
 }

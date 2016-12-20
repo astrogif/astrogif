@@ -9,8 +9,12 @@ import x from './x.png';
 import styles from './settings.css';
 
 export default class Settings extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = config.get();
+  }
   componentWillMount() {
-    console.log(config.get());
     ipcRenderer.send('newHeight', 290);
   }
 
@@ -18,11 +22,24 @@ export default class Settings extends Component {
     ipcRenderer.send('resetHeight');
   }
 
-  getButton(option, value, text) {
-    const configValue = config.get(option);
-    const isActive = configValue === value;
+  buttonClickHandler(option, value) {
+    // Does seem weird to both set things in state as well as in the config, but just
+    // updating the config isn't enough to render the component again with the UI changes
+    this.setState({
+      [option]: value
+    });
 
-    return <Button isActive={isActive}>{text}</Button>;
+    config.set(option, value);
+  }
+
+  getButton(option, value, text) {
+    const configValue = this.state[option];
+    const isActive = configValue === value;
+    const onClick= () => {
+      this.buttonClickHandler(option, value);
+    };
+
+    return <Button onClick={onClick} isActive={isActive}>{text}</Button>;
   }
 
   render() {
@@ -34,7 +51,6 @@ export default class Settings extends Component {
         <h2 className={styles.subTitle}>When copying, copy the</h2>
         <ButtonGroup>
           {this.getButton('copy', 'url', 'Url')}
-          {this.getButton('copy', 'image', 'Image')}
           {this.getButton('copy', 'markdown', 'Markdown')}
         </ButtonGroup>
       </div>

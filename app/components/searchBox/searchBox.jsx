@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
+import config from '../../../config';
 import magnifyingGlass from './magnifyingGlass.png';
 import styles from './searchBox.css';
 
@@ -25,7 +25,11 @@ export default class SearchBox extends Component {
 
     if (keyCode === enter) {
       event.preventDefault();
-      this.input.value = '';
+
+      if (config.get('hide') === 'reset') {
+        this.input.value = '';
+      }
+
       copy();
       return;
     }
@@ -46,6 +50,7 @@ export default class SearchBox extends Component {
     return (<div className={styles.container}>
       <img className={styles.magnifyingGlass} src={magnifyingGlass} />
       <input
+        autoFocus
         ref={i => this.input = i }
         onKeyUp={this.onInputKeyDown}
         className={styles.input}

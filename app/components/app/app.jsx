@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { clipboard, ipcRenderer } from 'electron';
 import autobind from 'react-autobind'
 import request from 'request';
+import config from '../../../config';
 import SearchBox from '../searchBox/searchBox';
 import Loader from '../loader/loader';
 import Error from '../error/error';
@@ -45,7 +46,9 @@ export default class App extends Component {
 
   resetAndClose() {
     this.close();
-    this.reset();
+    if (config.get('hide') === 'reset') {
+      this.reset();
+    }
   }
 
   search(query) {
@@ -62,6 +65,8 @@ export default class App extends Component {
   }
 
   request(query) {
+    this.resetWindowHeight();
+
     const tag = query || this.state.query;
 
     this.setState({
@@ -128,6 +133,7 @@ export default class App extends Component {
     const gifWidth = 300;
     const searchBoxEtAlHeight = 82;
     const proportion = gifWidth / width;
+
     ipcRenderer.send('newHeight', height * proportion + searchBoxEtAlHeight);
   }
 
@@ -136,7 +142,14 @@ export default class App extends Component {
   }
 
   copy() {
-    clipboard.writeText(this.state.gif.image_original_url);
+    const copy = config.get('copy');
+    switch(copy) {
+      case 'url':
+        clipboard.writeText(this.state.gif.image_original_url);
+      case 'markdown':
+        clipboard.writeText(`![](${this.state.gif.image_original_url})`);
+    }
+
     this.resetAndClose();
   }
 

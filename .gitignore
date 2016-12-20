@@ -48,17 +48,14 @@ client/dist
 typings/*
 typings.json
 
-mail-out/*
-heapdump*
-secrets.yaml
 
 .wercker/
 .envrc
 worker.env
 
 # Builds
-Steve-darwin-x64
 dist
-main.js
-main.js.map
+index.js
+index.js.map
 
+release

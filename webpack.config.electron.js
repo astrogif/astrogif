@@ -6,12 +6,12 @@ export default {
 
   devtool: 'source-map',
 
-    entry: './main/index.js',
+    entry: './main.js',
 
     output: {
       ...baseConfig.output,
       path: __dirname,
-      filename: './main.js'
+      filename: './index.js'
     },
 
     plugins: [

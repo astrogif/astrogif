@@ -6,6 +6,7 @@ const defaultHeight = 210;
 const mb = menubar({
   index: `file://${process.cwd()}/app/app.html`,
   height: defaultHeight,
+  preloadWindow: true,
   width: 320
 });
 
