@@ -21,7 +21,6 @@ mb.on('ready', () => {
   })
 
   ipcMain.on('newHeight', (event, height) => {
-    console.log('Setting to new hieght', height, typeof height);
     const currentDimensions = mb.window.getSize();
     mb.window.setSize(currentDimensions[0], Number.parseInt(height), true);
   })
