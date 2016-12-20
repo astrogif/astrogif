@@ -39,5 +39,7 @@ mb.on('ready', () => {
 });
 
 mb.on('after-create-window', () => {
-  mb.window.openDevTools();
+  if (process.env.NODE_ENV === 'development') {
+    mb.window.openDevTools();
+  }
 });
