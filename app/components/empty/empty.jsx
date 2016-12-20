@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import cog from './cog.png';
+import GithubLink from '../githubLink/githubLink';
 import styles from './empty.css';
 
 export default class Empty extends Component {
@@ -29,8 +30,9 @@ export default class Empty extends Component {
           </g>
         </g>
       </svg>
-      <img src={cog} className={styles.cog} onClick={openSettings} />
       <h1 className={styles.title}>AstroGif</h1>
+      <img src={cog} className={styles.cog} onClick={openSettings} />
+      <GithubLink />
     </div>);
   }
 }
