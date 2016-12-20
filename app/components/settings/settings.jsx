@@ -4,6 +4,7 @@ import { ipcRenderer } from 'electron';
 import config from '../../../config';
 import Button from '../buttons/button';
 import ButtonGroup from '../buttons/buttonGroup';
+import Shortcut from './shortcut';
 
 import x from './x.png';
 import styles from './settings.css';
@@ -49,7 +50,9 @@ export default class Settings extends Component {
       <img className={styles.close} src={x} onClick={close} />
       <div className={styles.optionContainer}> 
         <h2 className={styles.subTitle}>Global shortcut</h2>
-        <input className={styles.shortcut} defaultValue="ctrl+shift+space" />
+        <div className={styles.shortcut}>
+          <Shortcut />
+        </div>
       </div>
       <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>When copying, copy the</h2>

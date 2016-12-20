@@ -3,7 +3,8 @@ import ElectronConfig from 'electron-config';
 const defaults = {
   copy: 'url',
   hide: 'reset',
-  preview: 'gif'
+  preview: 'gif',
+  shortcut: 'Control + Alt + Space'
 };
 
 const electronConfig = new ElectronConfig({

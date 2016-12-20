@@ -60,6 +60,7 @@
     "react": "^15.4.1",
     "react-autobind": "^1.0.6",
     "react-dom": "^15.4.1",
+    "react-shortcut-chooser": "^1.1.2",
     "request": "^2.79.0"
   },
   "devDependencies": {

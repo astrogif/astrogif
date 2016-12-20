@@ -25,6 +25,9 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
+    // Register the window toggle on initial create
+    ipcRenderer.send('shortcut', config.get('shortcut'));
+
     this.state = initialState;
 
     this.reset = this.reset.bind(this);

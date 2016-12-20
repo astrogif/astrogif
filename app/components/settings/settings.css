@@ -37,7 +37,7 @@
   text-transform: uppercase;
 }
 
-.shortcut {
+.shortcut input {
   border: 1px solid #d4def1;
   height: 30px;
   font-size: 14px;
