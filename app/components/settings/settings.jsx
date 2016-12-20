@@ -15,7 +15,7 @@ export default class Settings extends Component {
     this.state = config.get();
   }
   componentWillMount() {
-    ipcRenderer.send('newHeight', 290);
+    ipcRenderer.send('newHeight', 370);
   }
 
   componentWillUnmount() {
@@ -47,6 +47,10 @@ export default class Settings extends Component {
     return (<div className={styles.container}>
       <h1 className={styles.title}>Settings</h1>
       <img className={styles.close} src={x} onClick={close} />
+      <div className={styles.optionContainer}> 
+        <h2 className={styles.subTitle}>Global shortcut</h2>
+        <input className={styles.shortcut} defaultValue="ctrl+shift+space" />
+      </div>
       <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>When copying, copy the</h2>
         <ButtonGroup>

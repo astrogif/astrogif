@@ -1,5 +1,5 @@
 import menubar from 'menubar';
-import { ipcMain } from 'electron';
+import { globalShortcut, ipcMain } from 'electron';
 
 const defaultHeight = 210;
 
@@ -10,7 +10,15 @@ const mb = menubar({
   width: 320
 });
 
+mb.app.on('will-quit', function () {
+  globalShortcut.unregisterAll()
+})
+
 mb.on('ready', () => {
+  globalShortcut.register('ctrl+shift+space', () => {
+    mb.window.isVisible() ? mb.hideWindow() : mb.showWindow()
+  })
+
   ipcMain.on('close', () => {
     mb.hideWindow();
   })

@@ -36,3 +36,16 @@
   margin: 0 0 5px;
   text-transform: uppercase;
 }
+
+.shortcut {
+  border: 1px solid #d4def1;
+  height: 30px;
+  font-size: 14px;
+  padding: 0 15px 0 5px;
+  width: 100%;
+}
+
+.shortcut:focus, .shortcut:active {
+  border-color: #10abeb;
+  outline: none;
+}
