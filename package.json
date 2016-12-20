@@ -1,7 +1,7 @@
 {
-  "name": "example-menubar-app",
-  "version": "1.0.0",
-  "description": "example menubar electron app",
+  "name": "astrogif",
+  "version": "0.0.1",
+  "description": "A menubar app for gif searches",
   "main": "index.js",
   "scripts": {
     "hot-server": "node -r babel-register server.js",
@@ -55,10 +55,8 @@
     "css-modules-require-hook": "^4.0.5",
     "electron-config": "^0.2.1",
     "electron-devtools-installer": "^2.0.1",
-    "lodash.debounce": "^4.0.8",
     "menubar": "*",
     "react": "^15.4.1",
-    "react-autobind": "^1.0.6",
     "react-dom": "^15.4.1",
     "react-shortcut-chooser": "^1.1.2",
     "request": "^2.79.0"

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { clipboard, ipcRenderer } from 'electron';
-import autobind from 'react-autobind'
 import request from 'request';
 import config from '../../../config';
 import SearchBox from '../searchBox/searchBox';
