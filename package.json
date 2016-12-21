@@ -18,18 +18,6 @@
   "build": {
     "productName": "AstroGif",
     "appId": "com.jamesmacfie.astro",
-    "linux": {
-      "target": "tar.gz"
-    },
-    "mac": {
-      "target": "zip"
-    },
-    "win": {
-      "target": "squirrel"
-    },
-    "squirrelWindows": {
-      "msi": true
-    },
     "asar": false
   },
   "directories": {
