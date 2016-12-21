@@ -48,7 +48,7 @@ export default class Settings extends Component {
     return (<div className={styles.container}>
       <h1 className={styles.title}>Settings</h1>
       <img className={styles.close} src={x} onClick={close} />
-      <div className={styles.optionContainer}> 
+      <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>Global shortcut</h2>
         <div className={styles.shortcut}>
           <Shortcut />
