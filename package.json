@@ -41,6 +41,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "css-modules-require-hook": "^4.0.5",
+    "electron": "^1.4.13",
     "electron-config": "^0.2.1",
     "electron-devtools-installer": "^2.0.1",
     "menubar": "*",

@@ -1,4 +1,4 @@
-const { app, Menu } = require('electron')
+const { app, Menu } = require('electron');
 import menubar from 'menubar';
 import { globalShortcut, ipcMain } from 'electron';
 import path from 'path';
