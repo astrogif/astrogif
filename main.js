@@ -1,4 +1,3 @@
-const { app, Menu } = require('electron');
 import menubar from 'menubar';
 import { globalShortcut, ipcMain } from 'electron';
 import path from 'path';
@@ -11,37 +10,6 @@ const mb = menubar({
   preloadWindow: true,
   width: 320
 });
-
-const template = [];
-if (process.platform === 'darwin') {
-  template.unshift({
-    label: app.getName(),
-    submenu: [
-      {
-        role: 'quit',
-        accelerator: 'Command+Q',
-        click() {
-          app.quit();
-        }
-      }
-    ]
-  });
-} else {
-  template.unshift({
-    label: app.getName(),
-    submenu: [
-      {
-        role: 'quit',
-        accelerator: 'Ctrl+Q',
-        click() {
-          app.quit();
-        }
-      }
-    ]
-  })
-}
-
-Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 
 mb.app.on('will-quit', function () {
   globalShortcut.unregisterAll()

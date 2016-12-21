@@ -1,10 +1,15 @@
 import React, { Component, PropTypes } from 'react';
+import { remote } from 'electron';
 
 import cog from './cog.png';
+import power from './power.png';
 import GithubLink from '../githubLink/githubLink';
 import styles from './empty.css';
 
 export default class Empty extends Component {
+  quit() {
+    remote.app.quit();
+  }
   render() {
     const { openSettings, closeSettings } = this.props;
 
@@ -33,6 +38,7 @@ export default class Empty extends Component {
       <h1 className={styles.title}>AstroGif</h1>
       <img src={cog} className={styles.cog} onClick={openSettings} />
       <GithubLink />
+      <img src={power} className={styles.power} onClick={this.quit} />
     </div>);
   }
 }
