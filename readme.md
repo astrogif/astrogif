@@ -8,6 +8,8 @@ AstroGif is a simple menu bar app that easily lets you search for animated gifs 
 
 Once installed you'll have an AstroGif icon in your taskbar that, when clicked, will open up the app in the center of the screen. Alternatively you can use the globally registered keyboard shortcut - this is `Control + Alt + Space` by default, but this can be modified. Pressing `Enter` once you have found a gif will copy the URL to the clipboard. Pressing `Escape` will close the window.
 
+To quit press `Cmd+Q` or `Ctrl+Q` (depending on your system).
+
 ## Settings
 
 ### Global shortcut
