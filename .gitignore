@@ -55,5 +55,7 @@ worker.env
 
 # Builds
 dist
+index.js
+index.js.map
 
 release

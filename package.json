@@ -2,7 +2,7 @@
   "name": "astrogif",
   "version": "0.0.2",
   "description": "A menubar app for gif searches",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "hot-server": "node -r babel-register server.js",
     "build-main": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.electron.js --progress --profile --colors",
