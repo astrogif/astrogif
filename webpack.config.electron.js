@@ -11,7 +11,7 @@ export default {
     output: {
       ...baseConfig.output,
       path: __dirname,
-      filename: './index.js'
+      filename: './dist/index.js'
     },
 
     plugins: [

@@ -15,6 +15,7 @@ export default class Settings extends Component {
 
     this.state = config.get();
   }
+
   componentWillMount() {
     ipcRenderer.send('newHeight', 370);
   }
@@ -74,7 +75,6 @@ export default class Settings extends Component {
           {this.getButton('preview', 'gif', '.gif')}
           {this.getButton('preview', 'mp4', '.mp4')}
         </ButtonGroup>
-
       </div>
     </div>);
   }

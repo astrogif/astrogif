@@ -7,8 +7,19 @@ export default class SearchBox extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      previousQuery: ''
+    };
+
     this.onInputKeyDown = this.onInputKeyDown.bind(this);
   }
+
+  setPreviousQuery(previousQuery) {
+    this.setState({
+      previousQuery
+    });
+  }
+
   onInputKeyDown(event) {
     const { close, copy, next, search } = this.props;
     const keyCode = event.which;
@@ -40,9 +51,15 @@ export default class SearchBox extends Component {
       return;
     }
 
-    search(event.target.value);
-  }
+    const value = event.target.value;
 
+    if (value === this.state.previousQuery) {
+      return;
+    }
+
+    this.setPreviousQuery(value);
+    search(value);
+  }
 
   render() {
     const { search } = this.props;

@@ -12,6 +12,24 @@ body {
   padding: 10px;
 }
 
+h1 {
+  color: #10abeb;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h2 {
+  color: #85b4dd;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .primaryIconColor {
   fill: #fff;
 }

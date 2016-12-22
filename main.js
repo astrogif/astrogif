@@ -11,35 +11,35 @@ const mb = menubar({
   width: 320
 });
 
+// Menubar events
 mb.app.on('will-quit', function () {
   globalShortcut.unregisterAll()
 })
-
-mb.on('ready', () => {
-  ipcMain.on('close', () => {
-    mb.hideWindow();
-  })
-
-  ipcMain.on('newHeight', (event, height) => {
-    const currentDimensions = mb.window.getSize();
-    mb.window.setSize(currentDimensions[0], Number.parseInt(height), true);
-  })
-
-  ipcMain.on('resetHeight', () => {
-    const currentDimensions = mb.window.getSize();
-    mb.window.setSize(currentDimensions[0], defaultHeight, true);
-  })
-
-  ipcMain.on('shortcut', (event, shortcut) => {
-    globalShortcut.unregisterAll();
-    globalShortcut.register(shortcut, () => {
-      mb.window.isVisible() ? mb.hideWindow() : mb.showWindow()
-    });
-  })
-});
 
 mb.on('after-create-window', () => {
   if (process.env.NODE_ENV === 'development') {
     mb.window.openDevTools();
   }
 });
+
+// IPC comms
+ipcMain.on('close', () => {
+  mb.hideWindow();
+})
+
+ipcMain.on('newHeight', (event, height) => {
+  const currentDimensions = mb.window.getSize();
+  mb.window.setSize(currentDimensions[0], Number.parseInt(height), true);
+})
+
+ipcMain.on('resetHeight', () => {
+  const currentDimensions = mb.window.getSize();
+  mb.window.setSize(currentDimensions[0], defaultHeight, true);
+})
+
+ipcMain.on('shortcut', (event, shortcut) => {
+  globalShortcut.unregisterAll();
+  globalShortcut.register(shortcut, () => {
+    mb.window.isVisible() ? mb.hideWindow() : mb.showWindow()
+  });
+})

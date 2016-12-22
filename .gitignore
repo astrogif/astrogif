@@ -55,8 +55,5 @@ worker.env
 
 # Builds
 dist
-index.js
-index.js.map
 
 release
-AstroGif-darwin-x64
