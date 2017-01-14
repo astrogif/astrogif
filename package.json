@@ -1,6 +1,6 @@
 {
   "name": "astrogif",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A menubar app for gif searches",
   "main": "index.js",
   "scripts": {
