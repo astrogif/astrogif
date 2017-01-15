@@ -39,3 +39,5 @@ After cloning the project run `npm install` followed by `npm run dev`. A local s
 ## Can you please package this for Windows?
 
 I've had issues getting the installer to correctly copy over the files needed to run the app when using it on Windows. Because Windows isn't my main OS I have little desire to keep on figuring out why it's borked.
+
+### Icons are from [Dale Humphries](http://www.dalehumphries.com/space-icon-set)
