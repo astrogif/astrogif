@@ -26,6 +26,7 @@ export default class SearchBox extends Component {
     const escape = 27;
     const enter = 13;
     const down = 40;
+    const value = event.target.value;
 
     if (keyCode === escape) {
       event.preventDefault();
@@ -47,11 +48,9 @@ export default class SearchBox extends Component {
 
     if (keyCode === down) {
       event.preventDefault();
-      next();
+      next(value);
       return;
     }
-
-    const value = event.target.value;
 
     if (value === this.state.previousQuery) {
       return;

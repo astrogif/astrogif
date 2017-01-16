@@ -9,6 +9,7 @@ import Actions from '../actions/actions';
 
 import styles from './home.css';
 
+let queryNum = 0;
 const initialState = {
   error: null,
   gif: null,
@@ -55,10 +56,37 @@ export default class Home extends Component {
   }
 
   request(query) {
+    if (!query || !query.length) {
+      return;
+    }
+
+    let doRequest = function doRequest(num) {
+      queryNum++;
+
+      request.get(`http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=${query}`, (err, res, body) => {
+        // Has the request changed since we fired off this one?
+        if (queryNum !== num) {
+          return;
+        }
+
+        if (err) {
+          this.setState({
+            error: err,
+            fetching: false
+          });
+
+          return;
+        }
+
+        this.setState({
+          gif: JSON.parse(body).data,
+          fetching: false
+        });
+      });
+    };
+    doRequest = doRequest.bind(this);
+
     this.resetWindowHeight();
-
-    const tag = query || this.state.query;
-
     this.setState({
       error: null,
       gif: null,
@@ -66,26 +94,12 @@ export default class Home extends Component {
       query
     });
 
-    request(`http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=${tag}`, (err, res, body) => {
-      // Has the request changed since we fired off this one?
-      if (tag !== this.state.query && !!this.state.query) {
-        return;
-      }
-
-      if (err) {
-        this.setState({
-          error: err,
-          fetching: false
-        });
-
-        return;
-      }
-
-      this.setState({
-        gif: JSON.parse(body).data,
-        fetching: false
-      });
-    });
+    /**
+     * Using queryNum as a tracker so that when we get a response back from the server we can
+     * check it's value vs the num value in the `doRequest` closure. If they don't match then
+     * we know we can ignore that response result
+     */
+    doRequest(queryNum + 1);
   }
 
   getInner() {
