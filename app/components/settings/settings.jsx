@@ -17,7 +17,7 @@ export default class Settings extends Component {
   }
 
   componentWillMount() {
-    ipcRenderer.send('newHeight', 370);
+    ipcRenderer.send('newHeight', 420);
   }
 
   componentWillUnmount() {
