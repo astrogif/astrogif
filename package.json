@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jamesmacfie/astrogif.git"
+    "url": "git+https://github.com/astrogif/astrogif.git"
   },
   "author": {
     "name": "James Macfie",
@@ -34,7 +34,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jamesmacfie/astrogif/issues"
+    "url": "https://github.com/astrogif/astrogif/issues"
   },
   "dependencies": {
     "classnames": "^2.2.5",

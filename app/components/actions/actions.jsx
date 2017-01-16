@@ -5,7 +5,7 @@ import power from './power.png';
 import github from './github.png';
 import styles from './actions.css';
 
-const openRepo = () => { shell.openExternal('https://github.com/jamesmacfie/astrogif'); }
+const openRepo = () => { shell.openExternal('https://github.com/astrogif/astrogif'); }
 const quit = () => { remote.app.quit(); }
 
 export default ({ openSettings }) => <div>
