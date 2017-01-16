@@ -1,5 +1,5 @@
 import menubar from 'menubar';
-import { globalShortcut, ipcMain } from 'electron';
+import { globalShortcut, ipcMain, Menu } from 'electron';
 import path from 'path';
 
 const defaultHeight = 210;
@@ -10,6 +10,72 @@ const mb = menubar({
   preloadWindow: true,
   width: 320
 });
+
+const menu = [{
+  label: 'AstroGif',
+  submenu: [{
+    label: 'Quit',
+    accelerator: 'Command+Q',
+    click() {
+      app.quit();
+    }
+  }],
+}, {
+  label: 'Edit',
+  submenu: [
+    {
+      label: 'Undo',
+      accelerator: 'CmdOrCtrl+Z',
+      selector: 'undo:'
+    },
+    {
+      label: 'Redo',
+      accelerator: process.platform === 'darwin' ? 'CmdOrCtrl+Y' : 'Shift+Command+Z',
+      selector: 'redo:'
+    },
+    {
+      type: 'separator'
+    },
+    {
+      label: 'Cut',
+      accelerator: process.platform === 'darwin' ? 'CmdOrCtrl+X' : 'Command+X',
+      selector: 'cut:'
+    },
+    {
+      label: 'Copy',
+      accelerator: process.platform === 'darwin' ? 'CmdOrCtrl+C' : 'Command+C',
+      selector: 'copy:'
+    },
+    {
+      label: 'Paste',
+      accelerator: process.platform === 'darwin' ? 'CmdOrCtrl+V' : 'Command+V',
+      selector: 'paste:'
+    },
+    {
+      label: 'Select All',
+      accelerator: process.platform === 'darwin' ? 'CmdOrCtrl+A' : 'Command+A',
+      selector: 'selectAll:'
+    },
+  ]
+}, {
+  label: 'View',
+  submenu: [
+    {
+      label: 'Reload',
+      accelerator: 'CmdOrCtrl+R',
+      click (item, focusedWindow) {
+        if (focusedWindow) focusedWindow.reload()
+      }
+    },
+    {
+      label: 'Toggle Developer Tools',
+      accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+      click (item, focusedWindow) {
+        if (focusedWindow) focusedWindow.webContents.toggleDevTools()
+      }
+    }
+  ]
+}];
 
 // Menubar events
 mb.app.on('will-quit', function () {
