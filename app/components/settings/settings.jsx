@@ -34,14 +34,21 @@ export default class Settings extends Component {
     config.set(option, value);
   }
 
-  getButton(option, value, text) {
+  getButton(option, value, text, handler) {
     const configValue = this.state[option];
     const isActive = configValue === value;
     const onClick= () => {
       this.buttonClickHandler(option, value);
+      if (handler) {
+        handler();
+      }
     };
 
     return <Button onClick={onClick} isActive={isActive}>{text}</Button>;
+  }
+
+  onLoginChangeEvent(value) {
+    ipcRenderer.send('login', value);
   }
 
   render() {
@@ -69,11 +76,18 @@ export default class Settings extends Component {
           {this.getButton('hide', 'nothing', 'Do nothing')}
         </ButtonGroup>
       </div>
-       <div className={styles.optionContainer}>
+      <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>Show previews as</h2>
         <ButtonGroup>
           {this.getButton('preview', 'gif', '.gif')}
           {this.getButton('preview', 'mp4', '.mp4')}
+        </ButtonGroup>
+      </div>
+      <div className={styles.optionContainer}>
+        <h2 className={styles.subTitle}>On computer start</h2>
+        <ButtonGroup>
+          {this.getButton('login', false, 'Do nothing', this.onLoginChangeEvent.bind(this, false))}
+          {this.getButton('login', true, 'Load Astrogif', this.onLoginChangeEvent.bind(this, true))}
         </ButtonGroup>
       </div>
     </div>);

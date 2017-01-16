@@ -17,7 +17,7 @@ const menu = [{
     label: 'Quit',
     accelerator: 'Command+Q',
     click() {
-      app.quit();
+      mb.app.quit();
     }
   }],
 }, {
@@ -80,7 +80,7 @@ const menu = [{
 // Menubar events
 mb.app.on('will-quit', function () {
   globalShortcut.unregisterAll()
-})
+});
 
 mb.on('after-create-window', () => {
   if (process.env.NODE_ENV === 'development') {
@@ -91,21 +91,31 @@ mb.on('after-create-window', () => {
 // IPC comms
 ipcMain.on('close', () => {
   mb.hideWindow();
-})
+});
 
 ipcMain.on('newHeight', (event, height) => {
   const currentDimensions = mb.window.getSize();
   mb.window.setSize(currentDimensions[0], Number.parseInt(height), true);
-})
+});
 
 ipcMain.on('resetHeight', () => {
   const currentDimensions = mb.window.getSize();
   mb.window.setSize(currentDimensions[0], defaultHeight, true);
-})
+});
 
 ipcMain.on('shortcut', (event, shortcut) => {
   globalShortcut.unregisterAll();
   globalShortcut.register(shortcut, () => {
     mb.window.isVisible() ? mb.hideWindow() : mb.showWindow()
   });
-})
+});
+
+ipcMain.on('login', (event, openAtLogin) => {
+  // Only open the packaged version
+  if (process.env.NODE_ENV !== 'development') {
+    mb.app.setLoginItemSettings({
+      openAtLogin,
+      openAsHidden: true
+    });
+  }
+});
