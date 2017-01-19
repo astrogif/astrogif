@@ -106,7 +106,12 @@ ipcMain.on('resetHeight', () => {
 ipcMain.on('shortcut', (event, shortcut) => {
   globalShortcut.unregisterAll();
   globalShortcut.register(shortcut, () => {
-    mb.window.isVisible() ? mb.hideWindow() : mb.showWindow()
+    if (mb.window.isVisible()) {
+      mb.hideWindow();
+    } else {
+      mb.showWindow();
+      mb.window.focus();
+    }
   });
 });
 
