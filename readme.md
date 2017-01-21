@@ -1,8 +1,8 @@
-# AstroGif
+# [AstroGif](https://astrogif.com)
 
 ![AstroGif](logo.png)
 
-AstroGif is a simple menu bar app that easily lets you search for animated gifs and copy their URLs to the clipboard. It currently only supports Mac (although you can compile it for Linux and Windows from source) and can copy either the plain URL or it's Markdown equivalent.
+AstroGif is a simple menu bar app that easily lets you search for animated gifs and copy their URLs or their markdown quivalent, to the clipboard. It supports Mac, Windows, and various Linux flavours,
 
 ![](demo.gif)
 
@@ -34,10 +34,7 @@ If you find any issues with AstroGif (it's still a young project!) then please [
 
 ## Running locally
 
-After cloning the project run `npm install` followed by `npm run dev`. A local server will be spun up on port 8000 for hot reloading the app as you develop. If you want to build the app then, depending on your OS, you can run the release script. These are `release-mac`, `release-win`, and `release-linux` (so, if you're on a mac, for example, you would run `npm run release-mac`). The packaged apps are built into a `release` folder.
+After cloning the project run `npm install` followed by `npm run dev`. A local server will be spun up on port 8000 for hot reloading the app as you develop. If you want to build the app then, depending on your OS, you can run the release script. These are `release-mac`, `release-win`, and `release-linux` (so, if you're on a mac, for example, you would run `npm run release-mac`). There are also a few other linux distro specific release scripts too - check `packagee.json` for these. The packaged apps are built into a `release` folder.
 
-## Can you please package this for Windows?
-
-I've had issues getting the installer to correctly copy over the files needed to run the app when using it on Windows. Because Windows isn't my main OS I have little desire to keep on figuring out why it's borked.
 
 ### Icons are from [Dale Humphries](http://www.dalehumphries.com/space-icon-set)

@@ -12,13 +12,13 @@
     "start": "cross-env NODE_ENV=production electron ./",
     "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./main.js",
     "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\"",
+    "release": "npm run build && build -mwl",
     "release-mac": "npm run build && build -m",
     "release-windows": "npm run build && build -w",
     "release-linux": "npm run build && build -l",
     "release-linux-deb": "npm run build && build -l deb",
     "release-linux-rpm": "npm run build && build -l rpm",
-    "release-linux-pacman": "npm run build && build -l pacman",
-    "release-linux-all": "npm run build && build -l deb rpm pacman"
+    "release-linux-pacman": "npm run build && build -l pacman"
   },
   "build": {
     "productName": "AstroGif",
