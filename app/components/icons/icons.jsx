@@ -52,7 +52,7 @@ export const Loader = () => <div className={styles.container}>
   </svg>
 </div>;
 
-export const NoGIf = () => <div className={styles.container}>
+export const NoGif = () => <div className={styles.container}>
   <svg width="59" height="64" viewBox="0 0 59 64">
     <g fill="none" fillRule="evenodd">
       <g transform="translate(-527.000000, -448.000000)">

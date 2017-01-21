@@ -55,11 +55,20 @@ export default class Home extends Component {
     this.request(query);
   }
 
-  request(query) {
+  next() {
+    const { fetching, query } = this.state;
+    if (fetching) {
+      return;
+    }
+
     if (!query || !query.length) {
       return;
     }
 
+    this.request(query);
+  }
+
+  request(query) {
     let doRequest = function doRequest(num) {
       queryNum++;
 
