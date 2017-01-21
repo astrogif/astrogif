@@ -13,6 +13,7 @@
     "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./main.js",
     "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\"",
     "release-mac": "npm run build && build -m",
+    "release-windows": "npm run build && build -w",
     "release-linux": "npm run build && build -l",
     "release-linux-deb": "npm run build && build -l deb",
     "release-linux-rpm": "npm run build && build -l rpm",
