@@ -1,4 +1,10 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import styles from './buttonGroup.css';
 
-export default ({ children }) => <div className={styles.container}>{children}</div>;
+const ButtonGroup = ({ children }) => <div className={styles.container}>{children}</div>;
+
+ButtonGroup.propTypes = {
+  children: PropTypes.any
+};
+
+export default ButtonGroup;

@@ -1,11 +1,19 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import cn from 'classnames';
 import styles from './button.css';
 
-export default ({ isActive, children, onClick }) => {
+const Button = ({ isActive, children, onClick }) => {
   const classes = cn(styles.container, {
     [styles.active]: isActive
   });
 
   return <button onClick={onClick} className={classes}>{children}</button>;
-}
+};
+
+Button.propTypes = {
+  isActive: PropTypes.bool,
+  children: PropTypes.any,
+  onClick: PropTypes.func
+};
+
+export default Button;

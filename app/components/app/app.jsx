@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { clipboard, ipcRenderer } from 'electron';
+import { ipcRenderer } from 'electron';
 import config from '../../../config';
 import Home from '../home/home';
 import Settings from '../settings/settings';

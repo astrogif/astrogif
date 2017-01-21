@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { clipboard, ipcRenderer } from 'electron';
 import request from 'request';
 import config from '../../../config';
@@ -30,12 +30,61 @@ export default class Home extends Component {
     this.request = this.request.bind(this);
   }
 
+  setWindowHeightFromGifWidth(width, height) { // eslint-disable-line class-methods-use-this
+    // Shouldn't hard code these numbers in here, but whatever
+    const gifWidth = 300;
+    const searchBoxEtAlHeight = 82;
+    const proportion = gifWidth / width;
+
+    ipcRenderer.send('newHeight', height * proportion + searchBoxEtAlHeight); // eslint-disable-line no-mixed-operators
+  }
+
+  getInner() {
+    const { gif, error, fetching } = this.state;
+
+    if (fetching) {
+      return <Loader />;
+    }
+
+    if (error) {
+      return (<div>
+        <Error />
+        <h1>Something went wrong :(</h1>
+      </div>);
+    }
+
+    if (!gif) {
+      return (<div>
+        <Logo />
+        <h1>Astrogif</h1>
+        <Actions openSettings={this.props.viewSettings} />
+      </div>);
+    }
+
+    if (Array.isArray(gif)) {
+      return (<div>
+        <NoGif />
+        <h1>No gifs found. Shame :(</h1>
+      </div>);
+    }
+
+    this.setWindowHeightFromGifWidth(Number(gif.image_width), Number(gif.image_height));
+
+    return (<Gif
+      copy={this.copy}
+      gif={gif} />);
+  }
+
+  resetWindowHeight() { // eslint-disable-line class-methods-use-this
+    ipcRenderer.send('resetHeight');
+  }
+
   reset() {
     this.setState(initialState);
     this.resetWindowHeight();
   }
 
-  close() {
+  close() { // eslint-disable-line class-methods-use-this
     ipcRenderer.send('close');
   }
 
@@ -111,63 +160,15 @@ export default class Home extends Component {
     doRequest(queryNum + 1);
   }
 
-  getInner() {
-    const { gif, error, fetching } = this.state;
-
-    if (fetching) {
-      return <Loader />;
-    }
-
-    if (error) {
-      return (<div>
-        <Error />
-        <h1>Something went wrong :(</h1>
-      </div>);
-    }
-
-    if (!gif) {
-      return (<div>
-        <Logo/>
-        <h1>Astrogif</h1>
-        <Actions openSettings={this.props.viewSettings} />
-      </div>);
-    }
-
-    if (Array.isArray(gif)) {
-      return (<div>
-        <NoGif />
-        <h1>No gifs found. Shame :(</h1>
-      </div>);
-    }
-
-    this.setWindowHeightFromGifWidth(Number(gif.image_width), Number(gif.image_height));
-
-    return <Gif
-      copy={this.copy}
-      gif={gif} />;
-  }
-
-  setWindowHeightFromGifWidth(width, height) {
-    // Shouldn't hard code these numbers in here, but whatever
-    const gifWidth = 300;
-    const searchBoxEtAlHeight = 82;
-    const proportion = gifWidth / width;
-
-    ipcRenderer.send('newHeight', height * proportion + searchBoxEtAlHeight);
-  }
-
-  resetWindowHeight() {
-    ipcRenderer.send('resetHeight');
-  }
-
   copy() {
     const copy = config.get('copy');
-    switch(copy) {
-      case 'url':
-        clipboard.writeText(this.state.gif.image_original_url);
-        break;
+    switch (copy) {
       case 'markdown':
         clipboard.writeText(`![](${this.state.gif.image_original_url})`);
+        break;
+      case 'url':
+      default:
+        clipboard.writeText(this.state.gif.image_original_url);
         break;
     }
 
@@ -175,7 +176,7 @@ export default class Home extends Component {
   }
 
   render() {
-    return <div className={styles.container}>
+    return (<div className={styles.container}>
       <SearchBox
         close={this.resetAndClose}
         search={this.search}
@@ -184,6 +185,10 @@ export default class Home extends Component {
       <div>
         {this.getInner()}
       </div>
-    </div>;
+    </div>);
   }
 }
+
+Home.propTypes = {
+  viewSettings: PropTypes.func.isRequired
+};

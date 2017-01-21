@@ -14,12 +14,6 @@ export default class SearchBox extends Component {
     this.onInputKeyDown = this.onInputKeyDown.bind(this);
   }
 
-  setPreviousQuery(previousQuery) {
-    this.setState({
-      previousQuery
-    });
-  }
-
   onInputKeyDown(event) {
     const { close, copy, next, search } = this.props;
     const keyCode = event.which;
@@ -60,18 +54,22 @@ export default class SearchBox extends Component {
     search(value);
   }
 
-  render() {
-    const { search } = this.props;
+  setPreviousQuery(previousQuery) {
+    this.setState({
+      previousQuery
+    });
+  }
 
+  render() {
     return (<div className={styles.container}>
-      <img className={styles.magnifyingGlass} src={magnifyingGlass} />
+      <img alt="search" className={styles.magnifyingGlass} src={magnifyingGlass} />
       <input
         autoFocus
         ref={i => this.input = i }
         onKeyUp={this.onInputKeyDown}
         className={styles.input}
         placeholder="what are you looking for?" />
-      </div>);
+    </div>);
   }
 }
 

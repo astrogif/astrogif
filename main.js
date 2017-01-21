@@ -4,7 +4,7 @@ import path from 'path';
 
 const defaultHeight = 210;
 const mb = menubar({
-  index: 'file://' + path.join(__dirname, 'app', 'app.html'),
+  index: `file://${path.join(__dirname, 'app', 'app.html')}`,
   height: defaultHeight,
   windowPosition: 'center',
   preloadWindow: true,
@@ -63,23 +63,29 @@ const menu = [{
     {
       label: 'Reload',
       accelerator: 'CmdOrCtrl+R',
-      click (item, focusedWindow) {
-        if (focusedWindow) focusedWindow.reload()
+      click(item, focusedWindow) {
+        if (focusedWindow) {
+          focusedWindow.reload();
+        }
       }
     },
     {
       label: 'Toggle Developer Tools',
       accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
-      click (item, focusedWindow) {
-        if (focusedWindow) focusedWindow.webContents.toggleDevTools()
+      click: (item, focusedWindow) => {
+        if (focusedWindow) {
+          focusedWindow.webContents.toggleDevTools();
+        }
       }
     }
   ]
 }];
 
+Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
+
 // Menubar events
-mb.app.on('will-quit', function () {
-  globalShortcut.unregisterAll()
+mb.app.on('will-quit', () => {
+  globalShortcut.unregisterAll();
 });
 
 mb.on('after-create-window', () => {

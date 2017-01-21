@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import cn from 'classnames';
 import { ipcRenderer } from 'electron';
 import config from '../../../config';
 import Button from '../buttons/button';
@@ -24,7 +23,7 @@ export default class Settings extends Component {
     ipcRenderer.send('resetHeight');
   }
 
-  buttonClickHandler(option, value) {
+  onButtonClickHandler(option, value) {
     // Does seem weird to both set things in state as well as in the config, but just
     // updating the config isn't enough to render the component again with the UI changes
     this.setState({
@@ -34,11 +33,15 @@ export default class Settings extends Component {
     config.set(option, value);
   }
 
+  onLoginChangeEvent(value) { // eslint-disable-line class-methods-use-this
+    ipcRenderer.send('login', value);
+  }
+
   getButton(option, value, text, handler) {
     const configValue = this.state[option];
     const isActive = configValue === value;
-    const onClick= () => {
-      this.buttonClickHandler(option, value);
+    const onClick = () => {
+      this.onButtonClickHandler(option, value);
       if (handler) {
         handler();
       }
@@ -47,15 +50,11 @@ export default class Settings extends Component {
     return <Button onClick={onClick} isActive={isActive}>{text}</Button>;
   }
 
-  onLoginChangeEvent(value) {
-    ipcRenderer.send('login', value);
-  }
-
   render() {
     const { close } = this.props;
     return (<div className={styles.container}>
       <h1 className={styles.title}>Settings</h1>
-      <img className={styles.close} src={x} onClick={close} />
+      <img alt="close" className={styles.close} src={x} onClick={close} />
       <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>Global shortcut</h2>
         <div className={styles.shortcut}>
