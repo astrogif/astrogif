@@ -15,8 +15,8 @@ export default class Settings extends Component {
     this.state = config.get();
   }
 
-  componentDidMount() {
-    ipcRenderer.send('newHeight', this.el.clientHeight + 20);
+  componentWillMount() {
+    ipcRenderer.send('newHeight', 420);
   }
 
   componentWillUnmount() {
@@ -52,7 +52,7 @@ export default class Settings extends Component {
 
   render() {
     const { close } = this.props;
-    return (<div className={styles.container} ref={el => this.el = el}>
+    return (<div className={styles.container}>
       <h1 className={styles.title}>Settings</h1>
       <img alt="close" className={styles.close} src={x} onClick={close} />
       <div className={styles.optionContainer}>
