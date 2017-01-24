@@ -152,12 +152,20 @@ export default class Home extends Component {
       query
     });
 
-    /**
-     * Using queryNum as a tracker so that when we get a response back from the server we can
-     * check it's value vs the num value in the `doRequest` closure. If they don't match then
-     * we know we can ignore that response result
-     */
-    doRequest(queryNum + 1);
+    // Don't do a previous search if the debouce time hasn't passed
+    if (this.searchTimout) {
+      clearTimeout(this.searchTimout);
+    }
+
+    // Cheap wee debounce
+    this.searchTimout = setTimeout(() => {
+      /**
+       * Using queryNum as a tracker so that when we get a response back from the server we can
+       * check it's value vs the num value in the `doRequest` closure. If they don't match then
+       * we know we can ignore that response result
+       */
+      doRequest(queryNum + 1);
+    }, this.props.debounceTime);
   }
 
   copy() {
@@ -190,5 +198,10 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-  viewSettings: PropTypes.func.isRequired
+  viewSettings: PropTypes.func.isRequired,
+  debounceTime: PropTypes.number
+};
+
+Home.defaultProps = {
+  debounceTime: 300
 };
