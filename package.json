@@ -48,6 +48,7 @@
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-shortcut-chooser": "^1.1.2",
+    "redux-logger": "^2.6.1",
     "request": "^2.79.0"
   },
   "devDependencies": {
@@ -81,6 +82,9 @@
     "file-loader": "^0.9.0",
     "image-webpack-loader": "^3.1.0",
     "json-loader": "^0.5.4",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
