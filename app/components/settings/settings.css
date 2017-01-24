@@ -48,3 +48,8 @@
   border-color: #10abeb;
   outline: none;
 }
+
+.version {
+  font-size: 10px;
+  text-align: right;
+}

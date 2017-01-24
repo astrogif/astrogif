@@ -4,6 +4,7 @@ import config from '../../../config';
 import Button from '../buttons/button';
 import ButtonGroup from '../buttons/buttonGroup';
 import Shortcut from './shortcut';
+import { version } from '../../../package.json';
 
 import x from './x.png';
 import styles from './settings.css';
@@ -89,6 +90,7 @@ export default class Settings extends Component {
           {this.getButton('login', true, 'Load Astrogif', this.onLoginChangeEvent.bind(this, true))}
         </ButtonGroup>
       </div>
+      <p className={styles.version}>Current version: v{version}</p>
     </div>);
   }
 }
