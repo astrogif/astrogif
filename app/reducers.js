@@ -1,9 +1,15 @@
 import { combineReducers } from 'redux';
 
-import test from './containers/test/reducer';
+import app from './containers/app/reducer';
+import gif from './containers/gif/reducer';
+import search from './containers/search/reducer';
+import settings from './containers/settings/reducer';
 
 const rootReducer = combineReducers({
-  test
+  app,
+  gif,
+  search,
+  settings
 });
 
 export default rootReducer;
