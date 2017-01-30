@@ -94,8 +94,15 @@ mb.on('after-create-window', () => {
   }
 });
 
+mb.on('ready', () => {
+  mb.window.on('hide', () => {
+    // Reset the UI when the app is hidden
+    mb.window.webContents.send('reset');
+  });
+});
+
 // IPC comms
-ipcMain.on('close', () => {
+ipcMain.on('hide', () => {
   mb.hideWindow();
 });
 

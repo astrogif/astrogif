@@ -1,0 +1,6 @@
+export default {
+  CLEAR: 'GIF:CLEAR',
+  REQUEST: 'GIF:REQUEST',
+  RESULT: 'GIF:RESULT',
+  ERROR: 'GIF:ERROR'
+};

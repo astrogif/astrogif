@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './icons.css';
+import styles from './styles.css';
 
 export const Logo = () => <div className={styles.container}>
   <svg height="64" viewBox="0 0 64 64" >
