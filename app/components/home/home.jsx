@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import Search from '../../containers/search';
 import Gif from '../../containers/gif';
 import ActionBar from '../../containers/actionBar';
-import { Error, Loader, Logo, NoGif } from '../icons';
+import { Error, Loader, Logo, NoGif } from '../icons/icons';
 
 import styles from './styles.css';
 
