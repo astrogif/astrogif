@@ -1,6 +1,9 @@
+import { ipcRenderer } from 'electron';
 import GIF from './constants';
 
 export function clear() {
+  ipcRenderer.send('resetHeight');
+
   return {
     type: GIF.CLEAR
   };

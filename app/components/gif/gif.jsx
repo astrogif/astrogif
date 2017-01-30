@@ -1,6 +1,16 @@
 import React, { PropTypes } from 'react';
+import { ipcRenderer } from 'electron';
 import config from '../../../config';
 import styles from './styles.css';
+
+function setWindowHeightFromGifWidth(width, height) { // eslint-disable-line class-methods-use-this
+  // Shouldn't hard code these numbers in here, but whatever
+  const gifWidth = 300;
+  const searchBoxEtAlHeight = 82;
+  const proportion = gifWidth / width;
+
+  ipcRenderer.send('newHeight', height * proportion + searchBoxEtAlHeight); // eslint-disable-line no-mixed-operators
+}
 
 const Gif = ({ hide, copy, gif }) => {
   const preview = config.get('preview');
@@ -8,6 +18,8 @@ const Gif = ({ hide, copy, gif }) => {
     copy();
     hide();
   };
+
+  setWindowHeightFromGifWidth(Number(gif.image_width), Number(gif.image_height));
 
   return (<div className={styles.container}>
     {preview === 'gif' ?
