@@ -1,5 +1,4 @@
-import { ipcRenderer } from 'electron';
-import { cancel, call, fork, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import GIF from './constants';
 import { result, error } from './actions';
 import request from '../../utils/request';
