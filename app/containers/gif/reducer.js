@@ -1,5 +1,6 @@
 import GIF from './constants';
 import APP from '../app/constants';
+import SEARCH from '../search/constants';
 
 const initialState = {
   error: null,
@@ -11,6 +12,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GIF.CLEAR:
       return initialState;
+    case SEARCH.NEXT:
     case GIF.REQUEST:
       return {
         error: null,

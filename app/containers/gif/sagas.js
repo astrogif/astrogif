@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import GIF from './constants';
+import SEARCH from '../search/constants';
 import { result, error } from './actions';
 import request from '../../utils/request';
 
@@ -15,5 +16,5 @@ export function* requestGif(action) {
 }
 
 export function* watchRequestGif() {
-  yield takeLatest(GIF.REQUEST, requestGif);
+  yield takeLatest([GIF.REQUEST, SEARCH.NEXT], requestGif);
 }

@@ -45,7 +45,6 @@ export default class Home extends Component {
 
   render() {
     const { error, fetching, gif } = this.props;
-    console.log('P', this.props);
     let innerCmp;
     if (fetching) {
       innerCmp = this.getLoader();
@@ -67,5 +66,5 @@ export default class Home extends Component {
 Home.propTypes = {
   error: PropTypes.object,
   fetching: PropTypes.bool,
-  gif: PropTypes.object
+  gif: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
 };
