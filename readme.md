@@ -2,6 +2,8 @@
 
 ![AstroGif](logo.png)
 
+![Build status](https://travis-ci.org/astrogif/astrogif.svg?branch=master)
+
 AstroGif is a simple menu bar app that easily lets you search for animated gifs and copy their URLs or their markdown quivalent, to the clipboard. It supports Mac, Windows, and various Linux flavours,
 
 ![](demo.gif)
