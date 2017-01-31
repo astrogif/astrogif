@@ -98,6 +98,7 @@
     "react-redux": "^4.4.5",
     "react-test-utils": "0.0.1",
     "redux": "^3.5.2",
+    "redux-mock-store": "^1.2.2",
     "sinon": "^1.17.7",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
