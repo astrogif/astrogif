@@ -9,7 +9,10 @@ import styles from './styles.css';
 
 export default class Home extends Component {
   getLoader() {
-    return <Loader />;
+    return (<div>
+      <Loader />
+      <h1>Searching...</h1>
+    </div>);
   }
 
   getError() {
