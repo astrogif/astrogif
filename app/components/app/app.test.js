@@ -26,9 +26,7 @@ function appFactory(newProps = {}) {
 }
 
 describe('<App />', () => {
-  it('renders', () => {
-    expect(shallow(appFactory())).to.exist;
-  });
+  it('renders', () => expect(mount(appFactory())).to.have.length(1));
 
   describe('on creation', () => {
     it('calls `setShortcut', (done) => {

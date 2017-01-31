@@ -15,9 +15,7 @@ function actionBarFactoy(newProps = {}) {
 }
 
 describe('<ActionBar />', () => {
-  it('renders', () => {
-    expect(shallow(actionBarFactoy())).to.exist;
-  });
+  it('renders', () => expect(shallow(actionBarFactoy())).to.exist);
 
   describe('Settings icon', () => {
     it('renders', () => {
