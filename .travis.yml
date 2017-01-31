@@ -1,11 +1,14 @@
 language: node_js
 node_js:
-  - "node"
+  - "6"
 
 addons:
   apt:
     packages:
       - xvfb
+
+before_script:
+  - npm install
 
 install:
   - export DISPLAY=':99.0'
