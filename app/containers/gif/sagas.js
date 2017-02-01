@@ -1,7 +1,8 @@
+import { remote } from 'electron';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import GIF from './constants';
 import SEARCH from '../search/constants';
-import { result, error } from './actions';
+import { result, error, clear } from './actions';
 import request from '../../utils/request';
 
 export function* requestGif(action) {
@@ -9,7 +10,12 @@ export function* requestGif(action) {
 
   try {
     const gif = yield call(request, requestURL);
-    yield put(result(gif));
+
+    if (remote.getCurrentWindow().isVisible()) {
+      yield put(result(gif));
+    } else {
+      yield put(clear());
+    }
   } catch (err) {
     yield put(error(err));
   }
