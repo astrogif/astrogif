@@ -1,7 +1,7 @@
 {
   "name": "astrogif",
   "author": "James Macfie <james@macfie.co.nz> (https://github.com/jamesmacfie)",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A menubar app for gif searches",
   "main": "index.js",
   "scripts": {
