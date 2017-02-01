@@ -4,6 +4,7 @@ import path from 'path';
 
 const defaultHeight = 210;
 const mb = menubar({
+  dir: __dirname,
   index: `file://${path.join(__dirname, 'app', 'app.html')}`,
   height: defaultHeight,
   windowPosition: 'center',
@@ -95,7 +96,7 @@ mb.on('after-create-window', () => {
 });
 
 mb.on('ready', () => {
-  mb.window.on('hide', () => {
+  mb.window.on('after-hide', () => {
     // Reset the UI when the app is hidden
     mb.window.webContents.send('reset');
   });
