@@ -57,13 +57,6 @@ export default class Settings extends Component {
         </ButtonGroup>
       </div>
       <div className={styles.optionContainer}>
-        <h2 className={styles.subTitle}>On hide</h2>
-        <ButtonGroup>
-          {this.getButton('hide', 'reset', 'Reset')}
-          {this.getButton('hide', 'nothing', 'Do nothing')}
-        </ButtonGroup>
-      </div>
-      <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>Show previews as</h2>
         <ButtonGroup>
           {this.getButton('preview', 'gif', '.gif')}

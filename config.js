@@ -2,7 +2,6 @@ import ElectronConfig from 'electron-config';
 
 const defaults = {
   copy: 'url',
-  hide: 'reset',
   preview: 'gif',
   shortcut: 'Control + Alt + Space',
   login: false
