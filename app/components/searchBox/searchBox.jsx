@@ -83,8 +83,10 @@ export default class SearchBox extends Component {
   }
 
   clear() {
-    this.input.value = '';
-    this.setPreviousQuery('');
+    if (this.input) {
+      this.input.value = '';
+      this.setPreviousQuery('');
+    }
   }
 
   render() {
