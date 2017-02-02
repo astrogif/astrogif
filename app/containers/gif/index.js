@@ -5,6 +5,7 @@ import * as AppActions from '../app/actions';
 
 function mapStateToProps(state) {
   return {
+    preview: state.settings.preview,
     gif: state.gif.details
   };
 }
