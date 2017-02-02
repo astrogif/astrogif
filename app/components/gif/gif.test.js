@@ -30,7 +30,7 @@ describe('<Gif />', () => {
       ipcRenderer.send.restore();
     });
 
-    it.only('sends an event when rendered', () => {
+    it('sends an event when rendered', () => {
       shallow(gifFactory());
       expect(ipcRenderer.send.calledWith('newHeight')).to.be.true;
     });
