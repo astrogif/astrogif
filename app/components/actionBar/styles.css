@@ -1,3 +1,9 @@
+.button {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
 .github {
   bottom: 14px;
   height: 20px;

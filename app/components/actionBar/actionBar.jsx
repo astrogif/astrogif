@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 import cn from 'classnames';
 import { shell, remote } from 'electron';
+import { Power, Settings } from '../icons/icons';
 import Updater from '../../containers/updater';
-import cog from './cog.png';
-import power from './power.png';
 import github from './github.png';
 import styles from './styles.css';
 
@@ -11,9 +10,13 @@ const openRepo = () => { shell.openExternal('https://github.com/astrogif/astrogi
 const quit = () => { remote.app.quit(); };
 
 const ActionBar = ({ changePage }) => <div>
-  <img alt="Settings" src={cog} className={cn('qa-settings', styles.cog)} onClick={() => { changePage('settings'); }} />
+  <button alt="Settings" className={cn('qa-settings', styles.button)} onClick={() => { changePage('settings'); }}>
+    <Settings className={styles.cog} />
+  </button>
   <img alt="Open on Github" src={github} className={cn('qa-github', styles.github)} onClick={openRepo} />
-  <img alt="Exit" src={power} className={cn('qa-quit', styles.power)} onClick={quit} />
+  <button alt="Quit" className={cn('qa-quit', styles.button)} onClick={quit}>
+    <Power className={styles.power} />
+  </button>
   <Updater />
 </div>;
 
