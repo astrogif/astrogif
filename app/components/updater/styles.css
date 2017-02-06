@@ -1,10 +1,14 @@
 .container {
+  background: transparent;
   bottom: 14px;
+  border: none;
+  color: #fff;
   line-height: 20px;
   height: 20px;
   cursor: pointer;
   display: flex;
   margin: 0;
+  padding: 0;
   position: absolute;
   left: 50px;
 }
