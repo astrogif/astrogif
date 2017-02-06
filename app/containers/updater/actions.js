@@ -1,3 +1,4 @@
+import { ipcRenderer } from 'electron';
 import UPDATE from './constants';
 
 export function updateChecking(payload) {
@@ -25,5 +26,13 @@ export function updateError(payload) {
   return {
     type: UPDATE.ERROR,
     payload
+  };
+}
+
+export function installAndRestart() {
+  ipcRenderer.send('installAndRestart');
+
+  return {
+    type: UPDATE.INSTALL
   };
 }

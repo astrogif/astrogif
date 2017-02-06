@@ -1,0 +1,16 @@
+.container {
+  bottom: 14px;
+  line-height: 20px;
+  height: 20px;
+  cursor: pointer;
+  display: flex;
+  margin: 0;
+  position: absolute;
+  left: 50px;
+}
+
+.text {
+  font-size: 10px;
+  line-height: 20px;
+  margin-left: 10px;
+}

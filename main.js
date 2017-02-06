@@ -1,6 +1,7 @@
 import menubar from 'menubar';
 import { globalShortcut, ipcMain, Menu } from 'electron';
 import path from 'path';
+import setupAutoupdater from './updater';
 
 const defaultHeight = 210;
 const mb = menubar({
@@ -96,6 +97,7 @@ mb.on('after-create-window', () => {
 });
 
 mb.on('ready', () => {
+  setupAutoupdater(mb);
   mb.window.on('after-hide', () => {
     // Reset the UI when the app is hidden
     mb.window.webContents.send('reset');
