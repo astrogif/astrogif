@@ -59,7 +59,7 @@ describe('updater actions', () => {
     });
   });
 
-  describe.only('#installAndRestart', () => {
+  describe('#installAndRestart', () => {
     let call;
     let ipcSpy;
 

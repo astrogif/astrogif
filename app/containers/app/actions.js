@@ -20,7 +20,6 @@ export function notCopied() {
   };
 }
 
-
 export function changePage(page) {
   return {
     type: APP.CHANGEPAGE,
@@ -43,10 +42,11 @@ export function reset() {
 }
 
 export function setShortcut(keys) {
-  ipcRenderer.send('shortcut', keys || config.get('shortcut'));
+  const payload = keys || config.get('shortcut');
+  ipcRenderer.send('shortcut', payload);
 
   return {
     type: APP.SHORTCUT,
-    payload: keys
+    payload
   };
 }
