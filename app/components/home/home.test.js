@@ -6,7 +6,7 @@ import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import Home from './home';
 
-const store = configureStore([])({ gif: { details: {} } });
+const store = configureStore([])({ settings: {}, gif: { details: {} } });
 function homeFactory(props = {}) {
   return (<Provider store={store}>
     <Home {...props} />

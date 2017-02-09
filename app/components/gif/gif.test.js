@@ -9,7 +9,8 @@ import Gif from './gif';
 const defaultProps = {
   hide: () => {},
   copy: () => {},
-  gif: {}
+  gif: {},
+  preview: 'gif'
 };
 function gifFactory(newProps) {
   const props = Object.assign({}, defaultProps, newProps);
@@ -48,7 +49,7 @@ describe('<Gif />', () => {
     });
 
     it('shows an mp4 video if the preview type is not gif', () => {
-      const cmp = shallow(gifFactory());
+      const cmp = shallow(gifFactory({ preview: 'mp4' }));
       expect(cmp.find('video')).to.have.length(1);
     });
   });
