@@ -30,7 +30,7 @@ describe('<App />', () => {
 
   describe('on creation', () => {
     it('calls `setShortcut', (done) => {
-      const cmp = appFactory({ setShortcut: () => { console.log('here'); done(); } });
+      const cmp = appFactory({ setShortcut: () => { done(); } });
       mount(cmp);
     });
 

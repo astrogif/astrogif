@@ -1,5 +1,12 @@
 import SEARCH from './constants';
 
+export function newQuery(query) {
+  return {
+    type: SEARCH.QUERY,
+    payload: query
+  };
+}
+
 export function copy(alt) {
   return {
     type: SEARCH.COPY,

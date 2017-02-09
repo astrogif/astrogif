@@ -7,6 +7,8 @@ import config from '../../../config';
 export function* copy(action) {
   const gif = yield select(state => state.gif);
 
+  console.log('COPYING THIS THING', gif);
+
   if (gif.details) {
     const copyConfig = config.get('copy');
 

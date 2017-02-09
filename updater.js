@@ -6,7 +6,7 @@ import pkg from './package.json';
 export default function setup(menuBar) {
   const mainWindow = menuBar.window;
   if (process.env.NODE_ENV !== 'production') {
-    console.log('Not production. Not checking for udpates');
+    console.log('Not production. Not checking for updates');
     return;
   }
 
