@@ -6,23 +6,26 @@ export default class SearchBox extends Component {
   constructor(props) {
     super(props);
 
-    this.clear = this.clear.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onInputKeyDown = this.onInputKeyDown.bind(this);
     this.onInputKeyUp = this.onInputKeyUp.bind(this);
   }
 
   onEscape(event) {
+    const { clear, hide } = this.props;
+
     event.preventDefault();
-    this.clear();
-    this.props.hide();
+    hide();
+    clear();
   }
 
   onEnter(event) {
+    const { clear, copy, hide } = this.props;
+
     event.preventDefault();
-    this.props.copy(event.metaKey);
-    this.clear();
-    this.props.hide();
+    copy(event.metaKey);
+    hide();
+    clear();
   }
 
   onDown(event) {
@@ -33,7 +36,7 @@ export default class SearchBox extends Component {
   onInputChange(event) {
     const query = event.target.value;
     if (!query) {
-      return this.clear();
+      return this.props.clear();
     }
 
     this.props.newQuery(query);
@@ -62,19 +65,15 @@ export default class SearchBox extends Component {
 
     if (keyCode === 13) { // Enter
       return this.onEnter(event);
-    } else if (keyCode === 40 && value) { // Down
+    } else if (keyCode === 40) { // Down
       return this.onDown(event);
     }
   }
 
   onInputKeyUp(event) {
     if (!event.target.value) {
-      this.clear();
+      this.props.clear();
     }
-  }
-
-  clear() {
-    this.props.clear();
   }
 
   render() {
@@ -83,7 +82,6 @@ export default class SearchBox extends Component {
       <input
         autoFocus
         value={this.props.currentQuery}
-        ref={i => this.input = i} // eslint-disable-line no-return-assign
         onKeyDown={this.onInputKeyDown}
         onKeyUp={this.onInputKeyUp}
         onChange={this.onInputChange}
