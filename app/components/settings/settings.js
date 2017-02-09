@@ -2,11 +2,16 @@ import React, { Component, PropTypes } from 'react';
 import { ipcRenderer } from 'electron';
 import Button from '../buttons/button';
 import ButtonGroup from '../buttons/buttonGroup';
+import Select from '../select/select';
 import Shortcut from './shortcut';
 import { version } from '../../../package.json';
 
 import x from './x.png';
 import styles from './styles.css';
+
+function getCtrlKey() {
+  return process.platform === 'darwin' ? '⌘' : 'ctrl';
+}
 
 export default class Settings extends Component {
   componentDidMount() {
@@ -23,6 +28,10 @@ export default class Settings extends Component {
 
   onLoginChangeEvent(value) { // eslint-disable-line class-methods-use-this
     ipcRenderer.send('login', value);
+  }
+
+  onDropDownChanged(key, event) {
+    this.props.update(key, event.target.value);
   }
 
   getButton(option, value, text, handler) {
@@ -50,11 +59,12 @@ export default class Settings extends Component {
         </div>
       </div>
       <div className={styles.optionContainer}>
-        <h2 className={styles.subTitle}>When copying, copy the</h2>
-        <ButtonGroup>
-          {this.getButton('copy', 'url', 'Url')}
-          {this.getButton('copy', 'markdown', 'Markdown')}
-        </ButtonGroup>
+        <h2 className={styles.subTitle}>What to copy</h2>
+        <Select value={this.props.config.copy} onChange={this.onDropDownChanged.bind(this, 'copy')}>
+          <option value="url">Copy the url on enter</option>
+          <option value="markdown">Copy the url as markdown on enter</option>
+          <option value="urlMarkdown">Copy the url on enter, as markdown on {getCtrlKey()}+enter</option>
+        </Select>
       </div>
       <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>Show previews as</h2>

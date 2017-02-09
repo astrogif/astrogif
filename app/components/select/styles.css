@@ -1,0 +1,23 @@
+.container {
+  position: relative;
+}
+
+.select {
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+  display: block;
+  font-size: 14px;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+  -webkit-appearance: none;
+}
+
+.down {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+}

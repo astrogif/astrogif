@@ -98,7 +98,7 @@ mb.on('after-create-window', () => {
 
 mb.on('ready', () => {
   setupAutoupdater(mb);
-  mb.window.on('after-hide', () => {
+  mb.on('after-hide', () => {
     // Reset the UI when the app is hidden
     mb.window.webContents.send('reset');
   });

@@ -1,12 +1,21 @@
-// import { clipboard } from 'electron';
+import { clipboard } from 'electron';
 import { select, takeEvery, put } from 'redux-saga/effects';
 import APP from './constants';
 import { copied, notCopied } from './actions';
+import config from '../../../config';
 
-export function* copy() {
+export function* copy(action) {
+  console.log('ALT', action.payload);
   const gif = yield select(state => state.gif);
+  console.log(gif);
   if (gif.details) {
-    // clipboard.writeText(state.gif.details.image_original_url);
+    const copyConfig = config.get('copy');
+
+    if ((action.payload && copyConfig === 'urlMarkdown') || copyConfig === 'markdown') {
+      clipboard.writeText(`![](${gif.details.image_original_url})`);
+    } else {
+      clipboard.writeText(gif.details.image_original_url);
+    }
     yield put(copied());
   } else {
     yield put(notCopied());

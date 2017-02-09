@@ -11,14 +11,17 @@ export default class SearchBox extends Component {
       previousQuery: ''
     };
 
+    this.clear = this.clear.bind(this);
     this.onInputKeyDown = this.onInputKeyDown.bind(this);
 
     // Giving this it's own event handler for 'reset' because the text content of
     // the input is not determinied by the redux store (which is the other listener
     // of `reset`)
-    ipcRenderer.on('reset', () => {
-      this.clear();
-    });
+    ipcRenderer.on('reset', this.clear);
+  }
+
+  componentWillUnmount() {
+    ipcRenderer.removeListener('reset', this.clear);
   }
 
   onEscape(event) {
@@ -35,7 +38,7 @@ export default class SearchBox extends Component {
     }
 
     this.clear();
-    this.props.copy();
+    this.props.copy(event.metaKey);
     this.props.hide();
   }
 
@@ -95,7 +98,7 @@ export default class SearchBox extends Component {
       <input
         autoFocus
         ref={i => this.input = i} // eslint-disable-line no-return-assign
-        onKeyUp={this.onInputKeyDown}
+        onKeyDown={this.onInputKeyDown}
         className={styles.input}
         placeholder="what are you looking for?" />
     </div>);

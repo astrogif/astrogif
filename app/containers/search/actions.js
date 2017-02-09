@@ -1,8 +1,9 @@
 import SEARCH from './constants';
 
-export function copy() {
+export function copy(alt) {
   return {
-    type: SEARCH.COPY
+    type: SEARCH.COPY,
+    payload: alt
   };
 }
 
