@@ -5,9 +5,8 @@ import { copied, notCopied } from './actions';
 import config from '../../../config';
 
 export function* copy(action) {
-  console.log('ALT', action.payload);
   const gif = yield select(state => state.gif);
-  console.log(gif);
+
   if (gif.details) {
     const copyConfig = config.get('copy');
 

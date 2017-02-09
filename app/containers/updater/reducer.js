@@ -8,7 +8,6 @@ export const initialState = {
 };
 
 export default function autoUpdaterReducer(state = initialState, action) {
-  console.log(action.type);
   switch (action.type) {
     case UPDATER.CHECKING:
       return Object.assign({}, state, {
