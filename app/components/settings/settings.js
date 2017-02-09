@@ -10,7 +10,7 @@ import x from './x.png';
 import styles from './styles.css';
 
 function getCtrlKey() {
-  return process.platform === 'darwin' ? '⌘' : 'ctrl';
+  return process.platform === 'darwin' ? 'cmd' : 'ctrl';
 }
 
 export default class Settings extends Component {
