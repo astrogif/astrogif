@@ -5,8 +5,8 @@ import ButtonGroup from '../buttons/buttonGroup';
 import Select from '../select/select';
 import Shortcut from './shortcut';
 import { version } from '../../../package.json';
+import { Cross } from '../icons/icons';
 
-import x from './x.png';
 import styles from './styles.css';
 
 function getCtrlKey() {
@@ -51,7 +51,9 @@ export default class Settings extends Component {
     const { config, updateShortCut } = this.props;
     return (<div className={styles.container} ref={el => this.el = el}>
       <h1 className={styles.title}>Settings</h1>
-      <img alt="close" className={styles.close} src={x} onClick={() => this.props.changePage('home')} />
+      <button className={styles.close} onClick={() => this.props.changePage('home')}>
+        <Cross height="15" width="15" />
+      </button>
       <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>Global shortcut</h2>
         <div className={styles.shortcut}>
