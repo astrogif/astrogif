@@ -12,7 +12,7 @@ const ActionBar = ({ changePage }) => <div>
   <button alt="Settings" className={cn('qa-settings', styles.button)} onClick={() => { changePage('settings'); }}>
     <Settings className={styles.cog} />
   </button>
-  <button alt="Github" className={cn('qa--github', styles.button)} onClick={openRepo}>
+  <button alt="Github" className={cn('qa-github', styles.button)} onClick={openRepo}>
     <Github className={styles.github} />
   </button>
   <button alt="Quit" className={cn('qa-quit', styles.button)} onClick={quit}>
