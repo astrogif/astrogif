@@ -18,8 +18,11 @@
 
 .magnifyingGlass {
   position: absolute;
-  height: 20px;
   left: 17px;
   top: 17px;
-  width: 20px;
 }
+
+.magnifyingGlass path {
+  fill: #848995;
+}
+
