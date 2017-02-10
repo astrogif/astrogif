@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import down from './svgs/down.svg';
 
 import styles from './styles.css';
 
@@ -7,7 +8,7 @@ export const Logo = () => <div className={styles.container}>
     <g fill="none" fillRule="evenodd">
       <g transform="translate(-108.000000, -240.000000)">
         <g transform="translate(108.000000, 240.000000)">
-          <path d="M53.1997,25.9281 L54.3547,26.1891 C54.5437,26.2411 54.5437,26.5101 54.3547,26.5621 L53.1997,26.8231 C53.1027,26.8461 53.0267,26.9141 52.9997,27.0001 L52.6827,28.2331 C52.6307,28.4231 52.3617,28.4231 52.3097,28.2331 L51.9927,27.0001 C51.9657,26.9141 51.8907,26.8461 51.7927,26.8231 L50.6387,26.5621 C50.4487,26.5101 50.4487,26.2411 50.6387,26.1891 L51.7927,25.9281 C51.8897,25.9041 51.9657,25.8371 51.9927,25.7511 L52.3097,24.5171 C52.3617,24.3281 52.6307,24.3281 52.6827,24.5171 L52.9997,25.7511 C53.0267,25.8371 53.1027,25.9041 53.1997,25.9281 L53.1997,25.9281 Z"className="primaryIconColor" />
+          <path d="M53.1997,25.9281 L54.3547,26.1891 C54.5437,26.2411 54.5437,26.5101 54.3547,26.5621 L53.1997,26.8231 C53.1027,26.8461 53.0267,26.9141 52.9997,27.0001 L52.6827,28.2331 C52.6307,28.4231 52.3617,28.4231 52.3097,28.2331 L51.9927,27.0001 C51.9657,26.9141 51.8907,26.8461 51.7927,26.8231 L50.6387,26.5621 C50.4487,26.5101 50.4487,26.2411 50.6387,26.1891 L51.7927,25.9281 C51.8897,25.9041 51.9657,25.8371 51.9927,25.7511 L52.3097,24.5171 C52.3617,24.3281 52.6307,24.3281 52.6827,24.5171 L52.9997,25.7511 C53.0267,25.8371 53.1027,25.9041 53.1997,25.9281 L53.1997,25.9281 Z" className="primaryIconColor" />
           <path d="M6.7033,57.5528 L7.8583,57.8138 C8.0473,57.8658 8.0473,58.1348 7.8583,58.1868 L6.7033,58.4478 C6.6063,58.4708 6.5303,58.5388 6.5033,58.6248 L6.1863,59.8578 C6.1343,60.0478 5.8653,60.0478 5.8133,59.8578 L5.4963,58.6248 C5.4693,58.5388 5.3943,58.4708 5.2963,58.4478 L4.1423,58.1868 C3.9523,58.1348 3.9523,57.8658 4.1423,57.8138 L5.2963,57.5528 C5.3933,57.5288 5.4693,57.4618 5.4963,57.3758 L5.8133,56.1418 C5.8653,55.9528 6.1343,55.9528 6.1863,56.1418 L6.5033,57.3758 C6.5303,57.4618 6.6063,57.5288 6.7033,57.5528"className="primaryIconColor" />
           <path d="M7,6 C7,6.552 6.552,7 6,7 C5.448,7 5,6.552 5,6 C5,5.448 5.448,5 6,5 C6.552,5 7,5.448 7,6"className="primaryIconColor" />
           <path d="M30,45 C30,45.552 29.552,46 29,46 C28.448,46 28,45.552 28,45 C28,44.448 28.448,44 29,44 C29.552,44 30,44.448 30,45"className="primaryIconColor" />
@@ -209,19 +210,25 @@ Cross.defaultProps = {
   width: 64
 };
 
-export const Down = ({ height, width, className }) => <svg className={className} width={width} height={height} viewBox="0 0 129 129">
-  <g>
-    <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" className="primaryIconColor" />
-  </g>
-</svg>;
 
-Down.propTypes = {
-  className: PropTypes.string,
-  height: PropTypes.number,
-  width: PropTypes.number
+const glyphs = {
+  down
 };
 
-Down.defaultProps = {
+const Icon = ({ glyph, height, width, className }) => <svg className={className} width={width} height={height}>
+  <use xlinkHref={glyphs[glyph]} />
+</svg>;
+
+Icon.propTypes = {
+  glyph: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+};
+
+Icon.defaultProps = {
   height: 64,
   width: 64
 };
+
+export default Icon;

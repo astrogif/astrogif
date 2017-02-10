@@ -12,10 +12,16 @@ export default {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'url-loader?limit=10000&mimetype=application/font-woff'
     }, {
-      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'file-loader'
     }, {
-      test: /\.(jpe?g|png|gif|svg)$/i,
+      test: /\.svg$/,
+      loader: 'svg-sprite?' + JSON.stringify({
+        name: '[name]_[hash]',
+        prefixize: true
+      })
+    }, {
+      test: /\.(jpe?g|png|gif)$/i,
       loaders: [
         'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
         'file?hash=sha512&digest=hex&name=[hash].[ext]'

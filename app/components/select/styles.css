@@ -15,13 +15,10 @@
 }
 
 .down {
+  fill: #080808;
   pointer-events: none;
   position: absolute;
   right: 5px;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.down path {
-  fill: #080808;
 }
