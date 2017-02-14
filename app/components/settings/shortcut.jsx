@@ -10,13 +10,3 @@ Shortcut.propTypes = {
 };
 
 export default Shortcut;
-
-//   shortCutHandler(shortcut) {
-//     config.set('shortcut', shortcut);
-//     ipcRenderer.send('shortcut', shortcut);
-//   }
-
-//   render() {
-//     return ;
-//   }
-// }
