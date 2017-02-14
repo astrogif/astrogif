@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { ipcRenderer } from 'electron';
 import Button from '../buttons/button';
 import ButtonGroup from '../buttons/buttonGroup';
+import Icon from '../icons/icons';
 import Select from '../select/select';
 import Shortcut from './shortcut';
 import { version } from '../../../package.json';
-import { Cross } from '../icons/icons';
 
 import styles from './styles.css';
 
@@ -52,7 +52,7 @@ export default class Settings extends Component {
     return (<div className={styles.container} ref={el => this.el = el}>
       <h1 className={styles.title}>Settings</h1>
       <button className={styles.close} onClick={() => this.props.changePage('home')}>
-        <Cross height="15" width="15" />
+        <Icon glyph="cross" height="15" width="15" />
       </button>
       <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>Global shortcut</h2>

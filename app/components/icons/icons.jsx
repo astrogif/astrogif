@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import cross from './svgs/cross.svg';
 import down from './svgs/down.svg';
 
 import styles from './styles.css';
@@ -193,26 +194,9 @@ MagnifyingGlass.defaultProps = {
   width: 64
 };
 
-export const Cross = ({ height, width, className }) => <svg className={className} width={width} height={height} viewBox="0 0 32.526 32.526">
-  <g>
-    <polygon points="32.526,2.828 29.698,0 16.263,13.435 2.828,0 0,2.828 13.435,16.263 0,29.698 2.828,32.526 16.263,19.091   29.698,32.526 32.526,29.698 19.091,16.263 " className="primaryIconColor" />
-  </g>
-</svg>;
-
-Cross.propTypes = {
-  className: PropTypes.string,
-  height: PropTypes.number,
-  width: PropTypes.number
-};
-
-Cross.defaultProps = {
-  height: 64,
-  width: 64
-};
-
-
 const glyphs = {
-  down
+  down,
+  cross
 };
 
 const Icon = ({ glyph, height, width, className }) => <svg className={className} width={width} height={height}>
