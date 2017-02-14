@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import cn from 'classnames';
 import { shell, remote } from 'electron';
-import Icon, { Github, Power, Settings } from '../icons/icons';
+import Icon from '../icons/icons';
 import Updater from '../../containers/updater';
 import styles from './styles.css';
 
@@ -16,7 +16,7 @@ const ActionBar = ({ changePage }) => <div>
     <Icon glyph="github" className={styles.github} />
   </button>
   <button alt="Quit" className={cn('qa-quit', styles.button)} onClick={quit}>
-    <Power className={styles.power} />
+    <Icon glyph="power" className={styles.power} />
   </button>
   <Updater />
 </div>;
