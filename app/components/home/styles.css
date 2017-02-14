@@ -5,6 +5,11 @@
   overflow: hidden;
 }
 
+.icon {
+  margin: 20px 0;
+  text-align: center;
+}
+
 .scroll {
   overflow-y: auto;
 }

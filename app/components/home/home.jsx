@@ -3,28 +3,28 @@ import React, { Component, PropTypes } from 'react';
 import Search from '../../containers/search';
 import Gif from '../../containers/gif';
 import ActionBar from '../../containers/actionBar';
-import { Error, Loader, Logo, NoGif } from '../icons/icons';
+import Icon from '../icons/icons';
 
 import styles from './styles.css';
 
 export default class Home extends Component {
   getLoader() {
-    return (<div>
-      <Loader />
+    return (<div className={styles.icon}>
+      <Icon glyph="loader" />
       <h1>Searching...</h1>
     </div>);
   }
 
   getError() {
-    return (<div>
-      <Error />
+    return (<div className={styles.icon}>
+      <Icon glyph="error" />
       <h1>Something went wrong :(</h1>
     </div>);
   }
 
   getNoGif() {
-    return (<div>
-      <NoGif />
+    return (<div className={styles.icon}>
+      <Icon glyph="noGif" />
       <h1>No gifs found. Shame :(</h1>
     </div>);
   }
@@ -39,8 +39,8 @@ export default class Home extends Component {
   }
 
   getDefault() {
-    return (<div>
-      <Logo />
+    return (<div className={styles.icon}>
+      <Icon glyph="logo" />
       <h1>Astrogif</h1>
       <ActionBar />
     </div>);
