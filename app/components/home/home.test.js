@@ -23,7 +23,7 @@ describe('<Home />', () => {
       cmp = mount(homeFactory());
     });
 
-    it('renders <Logo />', () => expect(cmp.find('Logo')).to.have.length(1));
+    it('renders <Logo />', () => expect(cmp.find('.qa-logo')).to.have.length(1));
     it('renders a <SearchBox />', () => expect(cmp.find('SearchBox')).to.have.length(1));
     it('renders an <ActionBar />', () => expect(cmp.find('ActionBar')).to.have.length(1));
   });
@@ -35,7 +35,7 @@ describe('<Home />', () => {
       cmp = mount(homeFactory({ fetching: true }));
     });
 
-    it('renders a <Loader />', () => expect(cmp.find('Loader')).to.have.length(1));
+    it('renders a <Loader />', () => expect(cmp.find('.qa-loader')).to.have.length(1));
     it('renders a <SearchBox />', () => expect(cmp.find('SearchBox')).to.have.length(1));
     it('does not render an <ActionBar />', () => expect(cmp.find('ActionBar')).to.have.length(0));
   });
@@ -47,7 +47,7 @@ describe('<Home />', () => {
       cmp = mount(homeFactory({ error: {} }));
     });
 
-    it('renders an <Error />', () => expect(cmp.find('Error')).to.have.length(1));
+    it('renders an <Error />', () => expect(cmp.find('.qa-error')).to.have.length(1));
     it('renders a <SearchBox />', () => expect(cmp.find('SearchBox')).to.have.length(1));
     it('does not render an <ActionBar />', () => expect(cmp.find('ActionBar')).to.have.length(0));
   });
@@ -71,7 +71,7 @@ describe('<Home />', () => {
       cmp = mount(homeFactory({ gif: [] }));
     });
 
-    it('renders a <NoGif />', () => expect(cmp.find('NoGif')).to.have.length(1));
+    it('renders a <NoGif />', () => expect(cmp.find('.qa-noGif')).to.have.length(1));
     it('renders a <SearchBox />', () => expect(cmp.find('SearchBox')).to.have.length(1));
     it('does not render an <ActionBar />', () => expect(cmp.find('ActionBar')).to.have.length(0));
   });
