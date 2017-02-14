@@ -9,6 +9,20 @@ export function clear() {
   };
 }
 
+export function newQuery(query) {
+  return {
+    type: GIF.QUERY,
+    payload: query
+  };
+}
+
+export function next() {
+  return {
+    type: GIF.NEXT
+  };
+}
+
+
 export function request(query) {
   return {
     type: GIF.REQUEST,

@@ -1,19 +1,17 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SearchBox from '../../components/searchBox/searchBox';
-import * as SearchActions from './actions';
+import * as GifActions from './actions';
 import * as AppActions from '../app/actions';
-import * as GifActions from '../gif/actions';
 
 function mapStateToProps(state) {
-  return state.search;
+  return state.gif;
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = Object.assign({}, SearchActions, {
+  const actions = Object.assign({}, GifActions, {
     hide: AppActions.hide,
-    clear: GifActions.clear,
-    request: GifActions.request
+    copy: AppActions.copy
   });
 
   return bindActionCreators(actions, dispatch);

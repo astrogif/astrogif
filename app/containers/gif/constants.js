@@ -2,5 +2,7 @@ export default {
   CLEAR: 'GIF:CLEAR',
   REQUEST: 'GIF:REQUEST',
   RESULT: 'GIF:RESULT',
-  ERROR: 'GIF:ERROR'
+  ERROR: 'GIF:ERROR',
+  QUERY: 'GIF:QUERY',
+  NEXT: 'GIF:NEXT'
 };

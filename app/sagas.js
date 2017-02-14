@@ -1,10 +1,8 @@
 import { watchRequestGif } from './containers/gif/sagas';
-import { watchCopy as watchAppCopy } from './containers/app/sagas';
-import { watchCopy as watchSearchCopy } from './containers/search/sagas';
+import { watchCopy } from './containers/app/sagas';
 export default function* rootSaga() {
   yield [
     watchRequestGif(),
-    watchAppCopy(),
-    watchSearchCopy()
+    watchCopy()
   ];
 }

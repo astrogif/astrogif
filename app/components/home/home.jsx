@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component, PropTypes } from 'react';
-import Search from '../../containers/search';
+import Search from '../../containers/gif/search';
 import Gif from '../../containers/gif';
 import ActionBar from '../../containers/actionBar';
 import Icon from '../icons/icons';
@@ -10,21 +10,21 @@ import styles from './styles.css';
 export default class Home extends Component {
   getLoader() {
     return (<div className={styles.icon}>
-      <Icon glyph="loader" />
+      <Icon glyph="loader" className="qa-loader" />
       <h1>Searching...</h1>
     </div>);
   }
 
   getError() {
     return (<div className={styles.icon}>
-      <Icon glyph="error" />
+      <Icon glyph="error" className="qa-error" />
       <h1>Something went wrong :(</h1>
     </div>);
   }
 
   getNoGif() {
     return (<div className={styles.icon}>
-      <Icon glyph="noGif" />
+      <Icon glyph="noGif" className="qa-noGif"/>
       <h1>No gifs found. Shame :(</h1>
     </div>);
   }
@@ -40,7 +40,7 @@ export default class Home extends Component {
 
   getDefault() {
     return (<div className={styles.icon}>
-      <Icon glyph="logo" />
+      <Icon glyph="logo" className="qa-logo" />
       <h1>Astrogif</h1>
       <ActionBar />
     </div>);

@@ -1,7 +1,6 @@
 import { remote } from 'electron';
 import { call, select, put, takeLatest } from 'redux-saga/effects';
 import GIF from './constants';
-import SEARCH from '../search/constants';
 import { result, error, clear } from './actions';
 import request from '../../utils/request';
 
@@ -10,11 +9,11 @@ export function* requestGif(action) {
 
   try {
     const gif = yield call(request, requestURL);
-    const search = yield select(state => state.search);
+    const state = yield select();
 
     // Only continue displaying this result if the window is visible to the user
     // and they haven't blanked out the search box
-    if (remote.getCurrentWindow().isVisible() && search.currentQuery.length) {
+    if (remote.getCurrentWindow().isVisible() && state.gif.currentQuery.length) {
       yield put(result(gif));
     } else {
       yield put(clear());
@@ -25,5 +24,5 @@ export function* requestGif(action) {
 }
 
 export function* watchRequestGif() {
-  yield takeLatest([GIF.REQUEST, SEARCH.NEXT], requestGif);
+  yield takeLatest([GIF.REQUEST, GIF.NEXT], requestGif);
 }

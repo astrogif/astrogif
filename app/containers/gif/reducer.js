@@ -1,20 +1,27 @@
 import GIF from './constants';
 import APP from '../app/constants';
-import SEARCH from '../search/constants';
 
 const initialState = {
   error: null,
+  searchQuery: '',
   fetching: false,
   details: null
 };
 
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case GIF.CLEAR:
-      return initialState;
-    case SEARCH.NEXT:
+    case GIF.QUERY:
+      return {
+        error: null,
+        fetching: false,
+        details: null,
+        currentQuery: action.payload
+      };
+    case GIF.NEXT:
     case GIF.REQUEST:
       return {
+        ...state,
         error: null,
         fetching: true,
         details: null
@@ -31,6 +38,7 @@ export default function reducer(state = initialState, action) {
         error: action.payload,
         fetching: false
       };
+    case GIF.CLEAR:
     case APP.RESET:
       return initialState;
     default:
