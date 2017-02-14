@@ -10,7 +10,7 @@ const quit = () => { remote.app.quit(); };
 
 const ActionBar = ({ changePage }) => <div>
   <button alt="Settings" className={cn('qa-settings', styles.button)} onClick={() => { changePage('settings'); }}>
-    <Settings className={styles.cog} />
+    <Icon glyph="cog" className={styles.cog} />
   </button>
   <button alt="Github" className={cn('qa-github', styles.button)} onClick={openRepo}>
     <Icon glyph="github" className={styles.github} />
