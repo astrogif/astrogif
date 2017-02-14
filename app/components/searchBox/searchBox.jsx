@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { MagnifyingGlass } from '../icons/icons';
+import Icon from '../icons/icons';
 import styles from './styles.css';
 
 export default class SearchBox extends Component {
@@ -78,7 +78,7 @@ export default class SearchBox extends Component {
 
   render() {
     return (<div className={styles.container}>
-      <MagnifyingGlass className={styles.magnifyingGlass} height="20" width="20" />
+      <Icon glyph="magnifyingGlass" className={styles.magnifyingGlass} height="20" width="20" />
       <input
         autoFocus
         value={this.props.currentQuery}
