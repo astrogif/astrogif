@@ -5,7 +5,12 @@ import { result, error, clear } from './actions';
 import request from '../../utils/request';
 
 export function* requestGif(action) {
-  const requestURL = `http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=${action.payload}`;
+  // If there is no query given, grab the latest one from state
+  const tag = action.payload
+    ? action.payload
+    : yield select(state => state.gif.currentQuery);
+
+  const requestURL = `http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=${tag}`;
 
   try {
     const gif = yield call(request, requestURL);
