@@ -83,8 +83,6 @@ const menu = [{
   ]
 }];
 
-Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
-
 // Menubar events
 mb.app.on('will-quit', () => {
   globalShortcut.unregisterAll();
@@ -97,6 +95,7 @@ mb.on('after-create-window', () => {
 });
 
 mb.on('ready', () => {
+  Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
   setupAutoupdater(mb);
   mb.on('after-hide', () => {
     // Reset the UI when the app is hidden
