@@ -81,7 +81,7 @@ export default class SearchBox extends Component {
       <Icon glyph="magnifyingGlass" className={styles.magnifyingGlass} height="20" width="20" />
       <input
         autoFocus
-        value={this.props.currentQuery}
+        value={this.props.currentQuery || ''}
         onKeyDown={this.onInputKeyDown}
         onKeyUp={this.onInputKeyUp}
         onChange={this.onInputChange}

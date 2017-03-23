@@ -5,7 +5,8 @@ const initialState = {
   error: null,
   searchQuery: '',
   fetching: false,
-  details: null
+  details: null,
+  currentQuery: null
 };
 
 

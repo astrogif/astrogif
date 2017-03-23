@@ -36,6 +36,8 @@ export function hide() {
 }
 
 export function reset() {
+  ipcRenderer.send('resetHeight');
+
   return {
     type: APP.RESET
   };
