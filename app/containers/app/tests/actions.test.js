@@ -67,8 +67,25 @@ describe('app actions', () => {
   });
 
   describe('#reset', () => {
+    let call;
+    let ipcSpy;
+
+    before(() => {
+      ipcSpy = sinon.spy(ipcRenderer, 'send');
+      call = actionFactory('reset', APP.RESET);
+    });
+
+    after(() => {
+      ipcRenderer.send.restore();
+    });
+
+    it('sends an ipcRenderer message of `resetHeight`', () => {
+      expect(ipcSpy.callCount).to.equal(1);
+      expect(ipcSpy.getCalls()[0].args[0]).to.eql('resetHeight');
+    });
+
     it(`returns a type of ${APP.RESET}`, () => {
-      expect(actionFactory('reset', APP.RESET).type)
+      expect(call.type)
         .to.eql(APP.RESET);
     });
   });

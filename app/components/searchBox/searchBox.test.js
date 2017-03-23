@@ -33,6 +33,11 @@ describe('<SearchBox />', () => {
     expect(input.props().value).to.eql(currentQuery);
   });
 
+  it('passes an empty string to the input when the currentQuery is not supplied', () => {
+    const input = shallow(searchBoxFactory({ currentQuery: null })).find('input');
+    expect(input.props().value).to.eql('');
+  });
+
   describe('On change', () => {
     describe('when there is no input value', () => {
       it('calls `clear`', (done) => {
