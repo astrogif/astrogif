@@ -15,7 +15,7 @@ const defaultProps = {
 
 const settingsFactory = (props, render = mount) => render(<Settings {...defaultProps} {...props} />);
 
-describe.only('<Settings />', () => {
+describe('<Settings />', () => {
   it('renders', () => {
     expect(settingsFactory()).to.have.length(1);
   });
