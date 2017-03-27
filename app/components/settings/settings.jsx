@@ -51,7 +51,7 @@ export default class Settings extends Component {
     const { config, updateShortCut } = this.props;
     return (<div className={styles.container} ref={el => this.el = el}>
       <h1 className={styles.title}>Settings</h1>
-      <button className={styles.close} onClick={() => this.props.changePage('home')}>
+      <button className={`${styles.close} qa-home`} onClick={() => this.props.changePage('home')}>
         <Icon glyph="cross" height="15" width="15" />
       </button>
       <div className={styles.optionContainer}>
@@ -62,7 +62,7 @@ export default class Settings extends Component {
       </div>
       <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>What to copy</h2>
-        <Select value={this.props.config.copy} onChange={this.onDropDownChanged.bind(this, 'copy')}>
+        <Select className="qa-cp" value={this.props.config.copy} onChange={this.onDropDownChanged.bind(this, 'copy')}>
           <option value="url">Copy the url on enter</option>
           <option value="markdown">Copy the url as markdown on enter</option>
           <option value="urlMarkdown">Copy the url on enter, as markdown on {getCtrlKey()}+enter</option>
@@ -70,14 +70,14 @@ export default class Settings extends Component {
       </div>
       <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>Show previews as</h2>
-        <ButtonGroup>
+        <ButtonGroup className="qa-prev">
           {this.getButton('preview', 'gif', '.gif')}
           {this.getButton('preview', 'mp4', '.mp4')}
         </ButtonGroup>
       </div>
       <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>On computer start</h2>
-        <ButtonGroup>
+        <ButtonGroup className="qa-str">
           {this.getButton('login', false, 'Do nothing', this.onLoginChangeEvent.bind(this, false))}
           {this.getButton('login', true, 'Load Astrogif', this.onLoginChangeEvent.bind(this, true))}
         </ButtonGroup>
@@ -88,7 +88,7 @@ export default class Settings extends Component {
 }
 
 Settings.propTypes = {
-  config: PropTypes.object,
+  config: PropTypes.object.isRequired,
   changePage: PropTypes.func.isRequired,
   update: PropTypes.func.isRequired,
   updateShortCut: PropTypes.func.isRequired
