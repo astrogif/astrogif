@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
+import cn from 'classnames';
 import styles from './styles.css';
 import Icon from '../icons/icons';
 
-const Select = ({ children, onChange, value }) => (<div className={styles.container}>
+const Select = ({ children, className, onChange, value }) => (<div className={cn(styles.container, className)}>
   <select className={styles.select} onChange={onChange} value={value}>
     {children}
   </select>
@@ -10,6 +11,7 @@ const Select = ({ children, onChange, value }) => (<div className={styles.contai
 </div>);
 
 Select.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.any,
   onChange: PropTypes.func,
   value: PropTypes.string
