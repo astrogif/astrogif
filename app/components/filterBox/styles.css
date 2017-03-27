@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  margin-bottom: 10px;
+  min-height: 52px;
+  position: relative;
+  width: 300px;
+}
+
+.input {
+  border: 0;
+  height: 52px;
+  flex-grow: 1;
+  font-size: 18px;
+  line-height: 40px;
+  outline: none;
+  padding: 0 17px 0 50px;
+}
+
+.funnel {
+  position: absolute;
+  left: 17px;
+  top: 17px;
+}
+
+.funnel {
+  fill: #848995;
+}

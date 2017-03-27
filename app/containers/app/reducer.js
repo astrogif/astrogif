@@ -1,7 +1,8 @@
 import APP from './constants';
 
 const initialState = {
-  page: 'home'
+  page: 'home',
+  history: {}
 };
 
 export default function reducer(state = initialState, action) {

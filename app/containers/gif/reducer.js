@@ -3,7 +3,6 @@ import APP from '../app/constants';
 
 const initialState = {
   error: null,
-  searchQuery: '',
   fetching: false,
   details: null,
   currentQuery: null

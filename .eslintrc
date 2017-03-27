@@ -26,7 +26,9 @@
     "react/require-default-props": 0,
     "no-plusplus": 0,
     "consistent-return": 0,
-    "jsx-a11y/no-static-element-interactions": 0
+    "jsx-a11y/no-static-element-interactions": 0,
+    "class-methods-use-this": 0,
+    "react/sort-comp": 0
   },
   "plugins": [
     "babel"

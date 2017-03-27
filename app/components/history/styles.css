@@ -1,0 +1,56 @@
+.container {
+  height: 250px;
+  overflow-x: auto;
+}
+
+.icon {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.noHistoryHeading {
+  margin-bottom: 0;
+}
+
+.noHistorysubheading {
+  margin-top: 0;
+}
+
+.history {
+  display: flex;
+}
+
+.searchTermContainer {
+  width: 150px;
+}
+
+.searchTerm {
+  color: #10abeb;
+  margin: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.gifs {
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.back {
+  bottom: 15px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  left: 15px;
+  width: 20px;
+  background: transparent;
+  border: none;
+  fill: #fff;
+  padding: 0;
+}
+
+.back:focus {
+  outline: none;
+}

@@ -1,5 +1,5 @@
-/* eslint-disable class-methods-use-this */
 import React, { Component, PropTypes } from 'react';
+import { ipcRenderer } from 'electron';
 import Search from '../../containers/gif/search';
 import Gif from '../../containers/gif';
 import ActionBar from '../../containers/actionBar';
@@ -8,6 +8,10 @@ import Icon from '../icons/icons';
 import styles from './styles.css';
 
 export default class Home extends Component {
+  componentDidMount() {
+    ipcRenderer.send('resetHeight');
+  }
+
   getLoader() {
     return (<div className={styles.icon}>
       <Icon glyph="loader" className="qa-loader" />

@@ -12,6 +12,10 @@ body {
   padding: 10px;
 }
 
+strong {
+  font-weight: bold;
+}
+
 h1 {
   color: #10abeb;
   font-size: 12px;

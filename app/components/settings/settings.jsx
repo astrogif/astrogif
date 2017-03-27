@@ -55,7 +55,7 @@ export default class Settings extends Component {
         <Icon glyph="cross" height="15" width="15" />
       </button>
       <div className={styles.optionContainer}>
-        <h2 className={styles.subTitle}>Global shortcut</h2>
+        <h2 className={styles.subTitle}>Global search shortcut</h2>
         <div className={styles.shortcut}>
           <Shortcut currentShortcut={config.shortcut} updateShortCut={updateShortCut} />
         </div>

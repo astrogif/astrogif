@@ -31,7 +31,7 @@ describe('<ActionBar />', () => {
     });
   });
 
-  describe('Github icon', () => {
+  describe.skip('Github icon', () => {
     before(() => {
       sinon.stub(electron.shell, 'openExternal').returns(null);
     });

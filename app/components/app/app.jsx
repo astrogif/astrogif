@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import Home from '../../containers/home';
+import History from '../../containers/history';
 import Settings from '../../containers/settings';
 
 // Simple router. Uses Redex store to set key with the key being
 // matched to a Component
 const pages = {
   home: Home,
-  settings: Settings
+  settings: Settings,
+  history: History
 };
 
 export default class App extends Component {

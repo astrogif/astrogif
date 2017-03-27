@@ -4,10 +4,11 @@
   padding: 0;
 }
 
-.github {
+.history {
   bottom: 14px;
   height: 20px;
   cursor: pointer;
+  fill: #fff;
   position: absolute;
   right: 50px;
   width: 20px;

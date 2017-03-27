@@ -1,0 +1,22 @@
+.container {
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.image {
+  border: 1px solid transparent;
+}
+
+.active {
+  border-color: #10abeb;
+}
+
+.activeIcon {
+  fill: #fff;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+}

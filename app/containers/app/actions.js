@@ -2,9 +2,23 @@ import { ipcRenderer } from 'electron';
 import config from '../../../config';
 import APP from './constants';
 
-export function copy() {
+export function copy(meta) {
   return {
-    type: APP.COPY
+    type: APP.COPY,
+    payload: {
+      meta
+    }
+  };
+}
+
+export function copyUrl(url, meta) {
+  console.log(url, meta);
+  return {
+    type: APP.COPY,
+    payload: {
+      url,
+      meta
+    }
   };
 }
 
