@@ -93,7 +93,6 @@ export default class History extends Component {
   }
 
   onFilterEnter(event) {
-    console.log(event.metaKey);
     this.props.copyUrl(this.selectedGif.image_original_url, event.metaKey);
     this.props.hide();
   }
@@ -115,7 +114,7 @@ export default class History extends Component {
 
   render() {
     const { hide, changePage, history } = this.props;
-    const goBack = (<button alt="Home" className={cn('qa-back', styles.back)} onClick={() => { changePage('home'); }}>
+    const goBack = (<button alt="Home" className={styles.back} onClick={() => { changePage('home'); }}>
       <Icon height="20" width="20" glyph="left" className="qa-back" onClick={() => changePage('home')} />
     </button>);
 
@@ -130,7 +129,7 @@ export default class History extends Component {
       <FilterBox
         onDown={this.onFilterDown}
         onUp={this.onFilterUp}
-        onEscape={hide}
+        onEscape={() => hide()}
         onEnter={this.onFilterEnter}
         onFilterChange={this.onFilterChange}
         />
