@@ -6,8 +6,8 @@ import { add } from '../history/actions';
 import config from '../../../config';
 
 export function* copy(action) {
-  const gif = yield select(state => state.gif);
-  const details = action.payload.url ? action.payload.url : gif.details.image_original_url;
+  const gif = action.payload.gif;
+  const details = action.payload.url ? action.payload.url : gif.image_original_url;
 
   if (details) {
     const copyConfig = config.get('copy');
@@ -20,7 +20,9 @@ export function* copy(action) {
 
     yield put(copied());
     if (!action.payload.url) {
-      yield put(add(gif.currentQuery, gif.details));
+      const gifState = yield select(state => state.gif);
+      console.log(gifState.currentQuery);
+      yield put(add(gifState.currentQuery, gif));
     }
   } else {
     yield put(notCopied());

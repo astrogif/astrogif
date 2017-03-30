@@ -33,6 +33,11 @@ export default class SearchBox extends Component {
     this.props.next();
   }
 
+  onUp(event) {
+    event.preventDefault();
+    this.props.prev();
+  }
+
   onInputChange(event) {
     const query = event.target.value;
     if (!query) {
@@ -67,6 +72,8 @@ export default class SearchBox extends Component {
       return this.onEnter(event);
     } else if (keyCode === 40) { // Down
       return this.onDown(event);
+    } else if (keyCode === 38) { // Up
+      return this.onUp(event);
     }
   }
 
@@ -97,6 +104,7 @@ SearchBox.propTypes = {
   copy: PropTypes.func.isRequired,
   request: PropTypes.func.isRequired,
   next: PropTypes.func.isRequired,
+  prev: PropTypes.func.isRequired,
   currentQuery: PropTypes.string,
   newQuery: PropTypes.func.isRequired
 };

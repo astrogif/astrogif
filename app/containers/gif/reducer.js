@@ -4,7 +4,6 @@ import APP from '../app/constants';
 const initialState = {
   error: null,
   fetching: false,
-  details: null,
   currentQuery: null
 };
 

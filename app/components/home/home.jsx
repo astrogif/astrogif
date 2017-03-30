@@ -8,8 +8,37 @@ import Icon from '../icons/icons';
 import styles from './styles.css';
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      queryIdx: null,
+      queries: []
+    };
+
+    this.newQuery = this.newQuery.bind(this);
+    this.clear = this.clear.bind(this);
+    this.copy = this.copy.bind(this);
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
+  }
+
   componentDidMount() {
     ipcRenderer.send('resetHeight');
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // going from no gif to gif
+    if ((!this.state.gif && nextProps.gif)
+    // going from gif to different gif
+      || (nextProps.gif && this.state.gif.id !== nextProps.gif.id)) {
+      const { queryIdx, queries } = this.state;
+      this.setState({
+        queryIdx: queryIdx === null ? 0 : queryIdx + 1,
+        queries: queries.concat(nextProps.gif),
+        gif: nextProps.gif
+      });
+    }
   }
 
   getLoader() {
@@ -28,18 +57,66 @@ export default class Home extends Component {
 
   getNoGif() {
     return (<div className={styles.icon}>
-      <Icon glyph="noGif" className="qa-noGif"/>
+      <Icon glyph="noGif" className="qa-noGif" />
       <h1>No gifs found. Shame :(</h1>
     </div>);
   }
 
   getGif() {
-    const { gif } = this.props;
-    if (Array.isArray(gif)) {
+    const { gif } = this.state;
+    if (!gif) {
       return this.getNoGif();
     }
 
-    return <Gif />;
+    return <Gif gif={gif} />;
+  }
+
+  resetState() {
+    this.setState({
+      queryIdx: null,
+      queries: [],
+      gif: null
+    });
+  }
+
+  newQuery(query) {
+    console.log('NEW', query);
+    this.props.newQuery(query);
+    this.resetState();
+  }
+
+  clear() {
+    this.resetState();
+    this.props.clear();
+  }
+
+  copy(meta) {
+    this.props.copy(this.state.gif, meta);
+  }
+
+  next() {
+    const { queryIdx, queries } = this.state;
+    if (queryIdx === queries.length - 1) {
+      this.props.next();
+      return;
+    }
+
+    this.setState({
+      queryIdx: queryIdx + 1,
+      gif: queries[queryIdx + 1]
+    });
+  }
+
+  prev() {
+    const { queryIdx, queries } = this.state;
+    if (queryIdx === 0) {
+      return;
+    }
+
+    this.setState({
+      queryIdx: queryIdx - 1,
+      gif: queries[queryIdx - 1]
+    });
   }
 
   getDefault() {
@@ -51,7 +128,7 @@ export default class Home extends Component {
   }
 
   render() {
-    const { error, fetching, gif } = this.props;
+    const { error, fetching, gif, hide, request } = this.props;
     let innerCmp;
     if (fetching) {
       innerCmp = this.getLoader();
@@ -64,7 +141,14 @@ export default class Home extends Component {
     }
 
     return (<div className={styles.container}>
-      <Search />
+      <Search
+        newQuery={this.newQuery}
+        prev={this.prev}
+        next={this.next}
+        clear={this.clear}
+        hide={hide}
+        request={request}
+        copy={this.copy} />
       {innerCmp}
     </div>);
   }
@@ -73,5 +157,12 @@ export default class Home extends Component {
 Home.propTypes = {
   error: PropTypes.object,
   fetching: PropTypes.bool,
-  gif: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+  gif: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  // copy: PropTypes.func.isRequired,
+  hide: PropTypes.func.isRequired,
+  next: PropTypes.func.isRequired,
+  copy: PropTypes.func.isRequired,
+  clear: PropTypes.func.isRequired,
+  request: PropTypes.func.isRequired,
+  newQuery: PropTypes.func.isRequired
 };

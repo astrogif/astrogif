@@ -2,10 +2,11 @@ import { ipcRenderer } from 'electron';
 import config from '../../../config';
 import APP from './constants';
 
-export function copy(meta) {
+export function copy(gif, meta) {
   return {
     type: APP.COPY,
     payload: {
+      gif,
       meta
     }
   };

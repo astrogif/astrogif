@@ -15,14 +15,14 @@ function setWindowHeightFromGifWidth(width, height) { // eslint-disable-line cla
 
 const Gif = ({ preview, hide, copy, gif }) => {
   const onClick = () => {
-    copy();
+    copy(gif);
     hide();
   };
 
   setWindowHeightFromGifWidth(Number(gif.image_width), Number(gif.image_height));
 
   const previewClasses = cn('qa-preview', styles.video);
-  return (<div className={styles.container}>
+  return (<div key={gif.id} className={styles.container}>
     {preview === 'gif' ?
       <img alt="gif" src={gif.image_url} className={previewClasses} onClick={onClick} /> :
       <video autoPlay loop className={previewClasses} onClick={onClick}>
