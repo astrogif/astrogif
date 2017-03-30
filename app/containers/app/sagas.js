@@ -7,7 +7,6 @@ import config from '../../../config';
 
 export function* copy(action) {
   const gif = yield select(state => state.gif);
-  console.log(action.payload);
   const details = action.payload.url ? action.payload.url : gif.details.image_original_url;
 
   if (details) {

@@ -12,7 +12,6 @@ export function copy(meta) {
 }
 
 export function copyUrl(url, meta) {
-  console.log(url, meta);
   return {
     type: APP.COPY,
     payload: {
