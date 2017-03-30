@@ -21,7 +21,6 @@ export function* copy(action) {
     yield put(copied());
     if (!action.payload.url) {
       const gifState = yield select(state => state.gif);
-      console.log(gifState.currentQuery);
       yield put(add(gifState.currentQuery, gif));
     }
   } else {

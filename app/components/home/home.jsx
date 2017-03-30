@@ -80,7 +80,6 @@ export default class Home extends Component {
   }
 
   newQuery(query) {
-    console.log('NEW', query);
     this.props.newQuery(query);
     this.resetState();
   }
