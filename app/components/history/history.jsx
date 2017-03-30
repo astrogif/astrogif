@@ -134,12 +134,13 @@ export default class History extends Component {
         onFilterChange={this.onFilterChange}
         />
       <div className={styles.container}>
-        {this.fuzzedTitles.map(t => <div className={styles.history}>
+        {this.fuzzedTitles.map(t => <div key={t} className={styles.history}>
           <div className={styles.searchTermContainer}>
             <h2 className={styles.searchTerm}>{t}</h2>
           </div>
           <div className={styles.gifs}>
             {history[t].map(g => (<Summary
+              key={g.id}
               gif={g}
               active={g.id === this.selectedGif.id} />))}
           </div>
