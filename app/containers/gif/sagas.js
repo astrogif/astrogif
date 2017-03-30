@@ -3,6 +3,7 @@ import { call, select, put, takeLatest } from 'redux-saga/effects';
 import GIF from './constants';
 import { result, error, clear } from './actions';
 import request from '../../utils/request';
+import config from '../../../config';
 
 export function* requestGif(action) {
   // If there is no query given, grab the latest one from state
@@ -10,7 +11,8 @@ export function* requestGif(action) {
     ? action.payload
     : yield select(state => state.gif.currentQuery);
 
-  const requestURL = `http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=${tag}`;
+  const rating = config.get('rating');
+  const requestURL = `http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=${tag}&rating=${rating}`;
 
   try {
     const gif = yield call(request, requestURL);

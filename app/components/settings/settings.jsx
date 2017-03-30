@@ -69,6 +69,16 @@ export default class Settings extends Component {
         </Select>
       </div>
       <div className={styles.optionContainer}>
+        <h2 className={styles.subTitle}>Restrict gif rating to</h2>
+        <ButtonGroup className="qa-rat">
+          {this.getButton('rating', 'y', 'Y')}
+          {this.getButton('rating', 'g', 'G')}
+          {this.getButton('rating', 'pg', 'PG')}
+          {this.getButton('rating', 'pg-13', 'PG-13')}
+          {this.getButton('rating', 'r', 'R')}
+        </ButtonGroup>
+      </div>
+      <div className={styles.optionContainer}>
         <h2 className={styles.subTitle}>Show previews as</h2>
         <ButtonGroup className="qa-prev">
           {this.getButton('preview', 'gif', '.gif')}

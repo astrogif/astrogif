@@ -4,7 +4,8 @@ const defaults = {
   copy: 'url',
   preview: 'gif',
   shortcut: 'Control + Alt + Space',
-  login: false
+  login: false,
+  rating: 'g'
 };
 
 const electronConfig = new ElectronConfig({
