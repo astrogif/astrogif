@@ -52,14 +52,19 @@ describe('<Home />', () => {
     it('does not render an <ActionBar />', () => expect(cmp.find('ActionBar')).to.have.length(0));
   });
 
-  describe('when there is a gif', () => {
+  describe.skip('when there is a gif', () => {
     let cmp;
 
-    beforeEach(() => {
-      cmp = mount(homeFactory({ gif: {} }));
+    before(() => {
+      cmp = mount(homeFactory());
+      cmp.setProps({
+        gif: 'here'
+      });
     });
 
-    it('renders a <Gif />', () => expect(cmp.find('Gif')).to.have.length(1));
+    it('renders a <Gif />', () => {
+      expect(cmp.find('Gif')).to.have.length(1);
+    });
     it('renders a <SearchBox />', () => expect(cmp.find('SearchBox')).to.have.length(1));
     it('does not render an <ActionBar />', () => expect(cmp.find('ActionBar')).to.have.length(0));
   });
