@@ -64,7 +64,7 @@ export default class Home extends Component {
 
   getGif() {
     const { gif } = this.state;
-    if (!gif) {
+    if (!gif || gif.length === 0) {
       return this.getNoGif();
     }
 
