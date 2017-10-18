@@ -33,7 +33,7 @@ export function request(query) {
 export function result(gif) {
   return {
     type: GIF.RESULT,
-    payload: gif.data
+    payload: gif.data.length === 0 ? null : gif.data
   };
 }
 
