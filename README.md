@@ -34,9 +34,12 @@ Will embed the `.gif` by default, but you can optionally choose to embed a `.mp4
 
 If you find any issues with AstroGif (it's still a young project!) then please [file an issue](https://github.com/jamesmacfie/astrogif/issues). PRs are also welcome :)
 
+## Updates
+
+I've updated _some_ packages, like the Electron ones, but a bunch of this app is wildly out of date. Shouldn't take too much effort to update them all (well, except Webpack no doubt), I just haven't been bothered yet.
+
 ## Running locally
 
-After cloning the project run `npm install` followed by `npm run dev`. A local server will be spun up on port 8000 for hot reloading the app as you develop. If you want to build the app then, depending on your OS, you can run the release script. These are `release-mac`, `release-win`, and `release-linux` (so, if you're on a mac, for example, you would run `npm run release-mac`). There are also a few other linux distro specific release scripts too - check `package.json` for these. The packaged apps are built into a `release` folder.
-
+After cloning the project run `yarn install` followed by `API_KEY={your_giphy_api_key_here} yarn dev`. A local server will be spun up on port 8000 for hot reloading the app as you develop. If you want to build the app then, depending on your OS, you can run the release script. These are `release-mac`, `release-win`, and `release-linux` (so, if you're on a mac, for example, you would run `yarn release-mac`). These won't have the API Key embedded in them so you'll need to hard code that reference (I need to sort this bit out, I know). There are also a few other linux distro specific release scripts too - check `package.json` for these. The packaged apps are built into a `release` folder.
 
 ### Icons are from [Dale Humphries](http://www.dalehumphries.com/space-icon-set)

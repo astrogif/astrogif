@@ -1,11 +1,10 @@
 import React, { PropTypes } from 'react';
 import cn from 'classnames';
-import { shell, remote } from 'electron';
+import { remote } from 'electron';
 import Icon from '../icons/icons';
 import Updater from '../../containers/updater';
 import styles from './styles.css';
 
-// const openRepo = () => { shell.openExternal('https://github.com/astrogif/astrogif'); };
 const quit = () => { remote.app.quit(); };
 
 const ActionBar = ({ changePage }) => <div>

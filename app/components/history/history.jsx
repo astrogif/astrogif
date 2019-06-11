@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import cn from 'classnames';
 import { ipcRenderer } from 'electron';
 import fuzzy from 'fuzzy';
 import Icon from '../icons/icons';
