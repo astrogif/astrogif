@@ -5106,8 +5106,8 @@ locate-path@^3.0.0:
     path-exists "^3.0.0"
 
 lodash-es@^4.2.1:
-  version "4.17.11"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.11.tgz#145ab4a7ac5c5e52a3531fb4f310255a152b4be0"
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
 
 lodash._baseassign@^3.0.0:
   version "3.2.0"
@@ -5442,7 +5442,7 @@ memory-fs@~0.4.1:
     errno "^0.1.3"
     readable-stream "^2.0.1"
 
-menubar@*:
+menubar@6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/menubar/-/menubar-6.0.3.tgz#6d87e8199a7c801d9a9b197c945f9e159bd67550"
   dependencies:
